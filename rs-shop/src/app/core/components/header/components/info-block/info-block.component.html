@@ -1,1 +1,41 @@
-<p>info-block works!</p>
+<div class="info-block_container">
+  <div class="wrapper">
+    <div class="location_container">
+      <mat-icon>location_on</mat-icon>
+      <p class="location">Минск</p>
+    </div>
+    <div class="buttons_container">
+      <button mat-button>Оплата частями</button>
+      <button mat-button>Бонусная программа</button>
+      <mat-menu #menu="matMenu">
+        <button mat-menu-item>Оплата</button>
+        <button mat-menu-item>Доставка</button>
+        <button mat-menu-item>Самовывоз</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="menu">Еще</button>
+    </div>
+    <div class="contact_container">
+      <p>Viber</p>
+      <p>A1 +375 29 302 10 21</p>
+      <mat-menu #menuContact="matMenu">
+        <button mat-menu-item>:) +375 25 502 10 21</button>
+        <button mat-menu-item> +375 17 302 10 21</button>
+        <button mat-menu-item>Telegram</button>
+        <button mat-menu-item>Почта</button>
+        <button mat-menu-item>Заказать звонок</button>
+        <button mat-menu-item>Написать нам</button>
+        <button mat-menu-item>Контакты</button>
+      </mat-menu>
+      <button mat-button [matMenuTriggerFor]="menuContact">Еще</button>
+
+    </div>
+    <div class="work-time_container">
+      <mat-icon>schedule</mat-icon>
+      <div class="time">
+        <p>контакт-центр</p>
+        <p>с 8:00 да 22:00</p>
+      </div>
+    </div>
+  </div>
+</div>
+

@@ -1,0 +1,51 @@
+@import "../../../../constatnts/styles/core-style";
+
+.mat-button:hover {
+    color: rgb(238, 45, 151);
+}
+.info-block_container {
+    width: 100%;
+    height: 40px;
+    background-color: #f7f8fa;
+}
+.wrapper {
+    width: $wrapper;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+.buttons_container {
+    width: 330px;
+    display: flex;
+    align-items: center;
+    height: 20px;
+    border-right: 1px solid rgba(213, 215, 219, 0.4);
+}
+.location_container {
+    display: flex;
+    align-items: center;
+    width: 70px;
+    height: 20px;
+}
+
+.contact_container {
+    display: flex;
+    align-items: center;
+    width: 300px;
+    border-right: 1px solid rgba(213, 215, 219, 0.4);
+}
+
+.work-time_container {
+    display: flex;
+    align-items: center;
+}
+
+.time {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    p {
+        margin: 0;
+    }
+}
