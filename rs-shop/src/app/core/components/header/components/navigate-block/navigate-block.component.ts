@@ -1,15 +1,12 @@
-import { Component, OnInit } from '@angular/core';
+import { Component } from '@angular/core';
 
 @Component({
   selector: 'app-navigate-block',
   templateUrl: './navigate-block.component.html',
   styleUrls: ['./navigate-block.component.scss']
 })
-export class NavigateBlockComponent implements OnInit {
+export class NavigateBlockComponent {
 
-  constructor() { }
-
-  ngOnInit(): void {
-  }
+  value:string = 'Clear me';
 
 }

@@ -1,0 +1,12 @@
+@import "../../../../../constatnts/styles/core-style.scss";
+
+.navigate_by_category {
+    width: 100%;
+    background: linear-gradient(90deg, #941e94, #e52e6b);
+    height: 40px;
+}
+
+.wrapper {
+    width: $wrapper;
+    margin: 0 auto;
+}

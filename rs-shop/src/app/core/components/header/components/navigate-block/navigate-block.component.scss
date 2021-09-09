@@ -1,0 +1,43 @@
+@import "../../../../constatnts/styles/core-style.scss";
+
+.wrapper {
+    width: $wrapper;
+    margin: 0 auto;
+    display: flex;
+    align-items: center;
+    height: 100%;
+}
+
+.navigate-block_container {
+}
+
+.container_top {
+    display: flex;
+    align-items: center;
+}
+
+.logo {
+    height: $btnHeight;
+    max-width: 120px;
+}
+
+.catalogue_btn {
+    width: 160px;
+    height: $btnHeight;
+}
+
+.input_search {
+    height: $btnHeight;
+}
+
+.form_search {
+    width: 540px;
+    // height: $btnHeight;
+}
+
+.basket_btn {
+    height: $btnHeight;
+    width: 110px;
+}
+
+// 160x45

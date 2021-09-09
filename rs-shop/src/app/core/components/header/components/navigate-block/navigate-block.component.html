@@ -1,1 +1,18 @@
-<p>navigate-block works!</p>
+<div class="navigate-block_container">
+    <div class="wrapper">
+      <div class="container_top">
+        <img class="logo" src="../../../../../../assets/icons/logo.svg" alt="">
+        <button class="catalogue_btn" mat-stroked-button>Basic</button>
+        <mat-form-field class="form_search" appearance="fill">
+          <mat-label>Clearable input</mat-label>
+          <input matInput type="text" [(ngModel)]="value">
+          <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
+            <mat-icon>close</mat-icon>
+          </button>
+        </mat-form-field>
+        <app-profile></app-profile>
+        <button class="basket_btn" mat-stroked-button>Basic</button>
+      </div>
+      </div>
+    <app-navigate-by-catigory></app-navigate-by-catigory>
+</div>
