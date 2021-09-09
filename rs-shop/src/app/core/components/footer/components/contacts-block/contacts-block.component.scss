@@ -1,0 +1,12 @@
+.contact_block {
+    display: flex;
+    align-items: center;
+}
+
+.viber:hover,
+.telegram:hover,
+.mail:hover,
+.contact_us:hover {
+    color: rgb(238, 45, 151);
+    cursor: pointer;
+}
