@@ -22,8 +22,8 @@ export class HttpService {
     return this.http.get<IUser[]>(`${this.baseUrl}users`)
   }
 
-  fetchGoods(): Observable<IGoods> {
-    return this.http.get<IGoods>(`${this.baseUrl}goods`)
+  fetchGoods(): Observable<IGoods[]> {
+    return this.http.get<IGoods[]>(`${this.baseUrl}goods`)
   }
 
 

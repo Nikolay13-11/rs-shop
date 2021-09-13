@@ -1,8 +1,10 @@
 <div class="wrapper">
   <div class="main_slider">
+    <ngb-carousel *ngIf="array">
+      <ng-template *ngFor="let item of array" ngbSlide>
     <div class="slider_card">
       <div class="slider_image">
-        <img src="https://cdn21vek.by/img/galleries/6240/261/preview_b/iphone12mini64gbmgdy3_apple_5fc912ff87fc3.jpeg" alt="">
+        <img [src]="item.imageUrls[1]" alt="">
       </div>
       <div class="slider_description">
         <div class="top_section">
@@ -18,15 +20,17 @@
         </div>
       </div>
     </div>
+  </ng-template>
+</ngb-carousel>
   </div>
 
   <div class="popular_goods">
     <h3>Популярные товары</h3>
-    <div *ngFor="let item of categories$ | async">
-      <p>{{item}}</p>
     </div>
   </div>
-</div>
+
+
+
 
 
 

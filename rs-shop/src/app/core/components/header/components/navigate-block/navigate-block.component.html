@@ -2,7 +2,18 @@
     <div class="wrapper">
       <div class="container_top">
         <img class="logo" src="../../../../../../assets/icons/logo.svg" alt="">
-        <button class="catalogue_btn" mat-stroked-button>Basic</button>
+
+        <button mat-button [matMenuTriggerFor]="mainCategories">Animal index</button>
+        <!-- #docregion sub-menu -->
+        <mat-menu #mainCategories="matMenu">
+          <button mat-menu-item *ngFor="let item of mainCategories$ | async" (mouseenter)="testLog(item)">{{item}}</button>
+        </mat-menu>
+
+        <!-- [matMenuTriggerFor]="vertebrates"
+          [matMenuTriggerFor]="invertebrates"
+         -->
+
+
         <mat-form-field class="form_search" appearance="fill">
           <mat-label>Clearable input</mat-label>
           <input matInput type="text" [(ngModel)]="value">

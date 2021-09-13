@@ -4,9 +4,22 @@
     width: 100%;
     background: linear-gradient(90deg, #941e94, #e52e6b);
     height: 40px;
-}
-
-.wrapper {
-    width: $wrapper;
-    margin: 0 auto;
+    ul {
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-evenly;
+    }
+    li {
+        list-style: none;
+        cursor: pointer;
+        color: #ffffff;
+    }
+    li:hover {
+    }
+    .wrapper {
+        height: 100%;
+        width: $wrapper;
+        margin: 0 auto;
+    }
 }

@@ -10,7 +10,7 @@ import { MainModule } from './main/main.module';
 
 @NgModule({
   declarations: [
-    AppComponent
+    AppComponent,
   ],
   imports: [
     BrowserModule,
@@ -20,6 +20,7 @@ import { MainModule } from './main/main.module';
     MainModule,
     HttpClientModule,
   ],
+  exports: [],
   providers: [],
   bootstrap: [AppComponent]
 })

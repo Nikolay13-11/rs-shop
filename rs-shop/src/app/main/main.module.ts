@@ -1,5 +1,6 @@
 import { CommonModule } from '@angular/common';
 import { NgModule } from '@angular/core';
+import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import { CatigoryComponent } from './components/catigory/catigory.component';
 import { DetailComponent } from './components/detail/detail.component';
 import { FavoritesComponent } from './components/favorites/favorites.component';
@@ -19,7 +20,8 @@ import { MainRoutingModule } from './main-routing.module';
   ],
   imports: [
     CommonModule,
-    MainRoutingModule
+    MainRoutingModule,
+    NgbModule
   ]
 })
 export class MainModule { }
