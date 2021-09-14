@@ -12,13 +12,16 @@ export class DataFromHttpService {
 
   private category = new BehaviorSubject<Icategory[]>([])
   private categories = new BehaviorSubject<any[]>([])
-  private subCategories = new BehaviorSubject<any[]>([])
+  private subCategories = new BehaviorSubject<string[]>([])
   private goods = new BehaviorSubject<any[]>([])
+  private topRateGoods = new BehaviorSubject<any[]>([])
+
 
   sharedCategory = this.category.asObservable()
   sharedCategories = this.categories.asObservable()
   sharedSubCategories = this.subCategories.asObservable()
   sharedGoods = this.goods.asObservable()
+  sharedTopRateGoods = this.topRateGoods.asObservable()
 
 
   nextCategory(input:any) {
@@ -34,6 +37,7 @@ export class DataFromHttpService {
   }
   nextGoods(value: any) {
     this.goods.next(value)
+    this.nextTopRateGoods()
   }
 
   nextSubCategories(value:any) {
@@ -41,5 +45,19 @@ export class DataFromHttpService {
     value.forEach((cat:any) =>
       cat.subCategories.forEach((subCat:any) => arr.push(subCat))
     )
+  }
+
+  updateSubCategory(option?: string) {
+    let k: string[] = [];
+    this.category.value.find(item => item.name === option)?.subCategories.forEach(i => k.push(i.name));
+    this.subCategories.next(k)
+  }
+
+  nextTopRateGoods() {
+    console.log(this.goods.value)
+    Object.entries(this.goods.value).
+    forEach(i => Object.entries(i[1]).
+    forEach(i => console.log(i[1])))
+    // this.goods.value.forEach(i => console.log(i))
   }
 }

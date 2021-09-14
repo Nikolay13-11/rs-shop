@@ -9,9 +9,10 @@ import { DataFromHttpService } from 'src/app/main/services/data-from-http.servic
 })
 export class NavigateBlockComponent implements OnInit{
 
-  value:string = 'Clear me';
+  value:string = '';
   mainCategories$?: Observable<any>;
   subCategories$?: Observable<any[]>;
+
 
 constructor(private dataService: DataFromHttpService) {
 
@@ -22,7 +23,8 @@ updateMainCategories() {
 }
 
 testLog(option:any) {
-
+  this.dataService.updateSubCategory(option)
+  this.subCategories$ = this.dataService.sharedSubCategories;
 }
 
 ngOnInit() {

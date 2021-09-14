@@ -4,7 +4,8 @@ interface Isub {
 }
 
 export interface IsubCategories {
-  sub: Isub[]
+  id: string;
+  name: string;
 }
 
 export interface Icategory {

@@ -1,7 +1,9 @@
 <div class="navigate_by_category">
   <div class="wrapper">
     <ul>
-      <li *ngFor="let item of mainCategories$ | async">{{item}}</li>
+      <li *ngFor="let item of mainCategories$ | async">
+        <button class="basket_btn" mat-stroked-button>{{item}}</button>
+      </li>
     </ul>
   </div>
 </div>

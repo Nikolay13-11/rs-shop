@@ -51,6 +51,7 @@ export class MainComponent implements OnInit{
           description: "minim duis ea est officia ipsum deserunt ut Lorem qui duis anim nisi cillum ut ex excepteur dolor ea excepteur ex et laboris duis velit culpa aute tempor voluptate voluptate nisi anim ad reprehenderit deserunt exercitation irure ipsum nulla commodo"
           },
   ]
+  currentRate = 6;
   constructor(private http:HttpService, private dataService:DataFromHttpService) {}
 
   updateData() {

@@ -3,26 +3,28 @@
       <div class="container_top">
         <img class="logo" src="../../../../../../assets/icons/logo.svg" alt="">
 
-        <button mat-button [matMenuTriggerFor]="mainCategories">Animal index</button>
+        <button mat-button [matMenuTriggerFor]="mainCategories">Каталог товаров</button>
         <!-- #docregion sub-menu -->
         <mat-menu #mainCategories="matMenu">
-          <button mat-menu-item *ngFor="let item of mainCategories$ | async" (mouseenter)="testLog(item)">{{item}}</button>
+          <button mat-menu-item *ngFor="let item of mainCategories$ | async" (mouseenter)="testLog(item)" [matMenuTriggerFor]="q">{{item}}</button>
         </mat-menu>
 
-        <!-- [matMenuTriggerFor]="vertebrates"
-          [matMenuTriggerFor]="invertebrates"
-         -->
-
+        <mat-menu #q="matMenu">
+          <button mat-menu-item *ngFor="let subItem of subCategories$ | async">{{subItem}}</button>
+        </mat-menu>
 
         <mat-form-field class="form_search" appearance="fill">
-          <mat-label>Clearable input</mat-label>
+          <mat-icon>search</mat-icon>
+          <mat-label>
+            Поиск товаров
+          </mat-label>
           <input matInput type="text" [(ngModel)]="value">
           <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
             <mat-icon>close</mat-icon>
           </button>
         </mat-form-field>
         <app-profile></app-profile>
-        <button class="basket_btn" mat-stroked-button>Basic</button>
+        <button class="basket_btn" mat-stroked-button>Корзина</button>
       </div>
       </div>
     <app-navigate-by-catigory></app-navigate-by-catigory>
