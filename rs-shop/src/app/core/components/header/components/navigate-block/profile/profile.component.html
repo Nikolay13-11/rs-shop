@@ -1,3 +1,13 @@
 <div class="profile_block">
-  <button class="accaunt_btn" mat-stroked-button>Basic</button>
+  <mat-menu #profile="matMenu">
+    <div class="not-login">
+      <img src="../../../../../../../assets/icons/notLogin.svg" alt="">
+    </div>
+    <button class="Login_btn" mat-menu-item *ngIf="true">Войти</button>
+    <button class="Login_btn" mat-menu-item *ngIf="false">Выйти</button>
+    <button mat-menu-item>Корзина</button>
+    <button mat-menu-item>Избранные товары</button>
+    <button mat-menu-item>Лист ожидания</button>
+  </mat-menu>
+  <button class="accaunt_btn" mat-button [matMenuTriggerFor]="profile">Аккаунт</button>
 </div>

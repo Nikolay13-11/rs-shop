@@ -1,5 +1,6 @@
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
+import { InputSearchService } from 'src/app/core/services/input-search.service';
 import { DataFromHttpService } from 'src/app/main/services/data-from-http.service';
 
 @Component({
@@ -14,7 +15,7 @@ export class NavigateBlockComponent implements OnInit{
   subCategories$?: Observable<any[]>;
 
 
-constructor(private dataService: DataFromHttpService) {
+constructor(private dataService: DataFromHttpService, private inputService:InputSearchService) {
 
 }
 
@@ -29,6 +30,10 @@ testLog(option:any) {
 
 ngOnInit() {
   this.updateMainCategories()
+}
+
+updateSearchValue(event:any) {
+this.inputService.nextInputSearch(event)
 }
 
 }

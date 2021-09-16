@@ -54,10 +54,18 @@ export class DataFromHttpService {
   }
 
   nextTopRateGoods() {
-    console.log(this.goods.value)
-    Object.entries(this.goods.value).
-    forEach(i => Object.entries(i[1]).
-    forEach(i => console.log(i[1])))
+    // console.log(JSON.parse(this.goods.value))
+
+    // let a:any = [];
+    // let b: any = [];
+    // [Object.entries(this.goods.value)][0].forEach(i => a.push(i.pop()));
+    // a = a.forEach((i:any) => Object.entries(i).forEach(i => b.push(i.pop())));
+    // b.forEach((element:any) => {
+    //   element
+    // });
+    // Object.entries(this.goods.value).
+    // forEach(i => Object.entries(i[1]).
+    // forEach(i => console.log(i[1])))
     // this.goods.value.forEach(i => console.log(i))
   }
 }
