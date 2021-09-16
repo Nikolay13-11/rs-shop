@@ -1,6 +1,7 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
 import { Icategory } from 'src/app/core/models/categories.model';
+import { IDetail } from 'src/app/core/models/goods.model';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -14,18 +15,22 @@ export class DataFromHttpService {
   private categories = new BehaviorSubject<any[]>([])
   private subCategories = new BehaviorSubject<string[]>([])
   private goods = new BehaviorSubject<any[]>([])
-  private topRateGoods = new BehaviorSubject<any[]>([])
-
+  private topRateGoods = new BehaviorSubject<IDetail[]>([])
+  private allGoodsArray = new BehaviorSubject<IDetail[]>([])
+  private goodsForSlider = new BehaviorSubject<IDetail[]>([])
+  private searchResult = new BehaviorSubject<any[]>([])
 
   sharedCategory = this.category.asObservable()
   sharedCategories = this.categories.asObservable()
   sharedSubCategories = this.subCategories.asObservable()
   sharedGoods = this.goods.asObservable()
   sharedTopRateGoods = this.topRateGoods.asObservable()
+  sharedAllGoodsArray = this.allGoodsArray.asObservable()
+  sharedGoodsForSlider = this.goodsForSlider.asObservable()
+  sharedSearchResult = this.searchResult.asObservable()
 
 
   nextCategory(input:any) {
-    console.log(input);
     this.category.next(input)
   }
 
@@ -37,7 +42,9 @@ export class DataFromHttpService {
   }
   nextGoods(value: any) {
     this.goods.next(value)
+    this.nextAllGoodsArray()
     this.nextTopRateGoods()
+    this.nextGoodsForSlider()
   }
 
   nextSubCategories(value:any) {
@@ -53,19 +60,39 @@ export class DataFromHttpService {
     this.subCategories.next(k)
   }
 
-  nextTopRateGoods() {
-    // console.log(JSON.parse(this.goods.value))
+  nextAllGoodsArray() {
+    let a:any = (Object.entries(this.goods.value))
+    .flat()
+    .filter(i => typeof(i) != 'string')
+    .map(i => Object.entries(i)
+    .flat()
+    .filter(i => typeof(i) != 'string'))
+    .flat(2)
+    this.allGoodsArray.next(a)
+  }
 
-    // let a:any = [];
-    // let b: any = [];
-    // [Object.entries(this.goods.value)][0].forEach(i => a.push(i.pop()));
-    // a = a.forEach((i:any) => Object.entries(i).forEach(i => b.push(i.pop())));
-    // b.forEach((element:any) => {
-    //   element
-    // });
-    // Object.entries(this.goods.value).
-    // forEach(i => Object.entries(i[1]).
-    // forEach(i => console.log(i[1])))
-    // this.goods.value.forEach(i => console.log(i))
+  nextTopRateGoods() {
+    let topRateItems = (this.allGoodsArray.value)
+    .filter(i => i.rating == 5)
+    this.topRateGoods.next(topRateItems)
+
+    console.log((this.category.value).flat(4))
+  }
+
+  nextGoodsForSlider() {
+    let coaf = this.allGoodsArray.value.length;
+    let arr = [];
+    let resultSliderArray:IDetail[] = []
+    for(let i = 0; i <= 9; i++) {
+      arr.push(Math.ceil(Math.random() * coaf))
+    }
+    arr.forEach(item => resultSliderArray.push(this.allGoodsArray.value[item]))
+    this.goodsForSlider.next(resultSliderArray)
+  }
+
+  mainSerch(input:string) {
+    let searchResultArray = [];
+    searchResultArray.push(this.allGoodsArray.value.filter(item => item.name.toLowerCase().includes(input.toLowerCase())));
+    this.searchResult.next(searchResultArray);
   }
 }

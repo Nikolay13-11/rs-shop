@@ -1,4 +1,4 @@
-interface IDetail {
+export interface IDetail {
   id:string;
   name:string;
   imageUrls: string[];

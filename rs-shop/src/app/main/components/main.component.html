@@ -1,10 +1,10 @@
 <div class="wrapper">
   <div class="main_slider">
-    <ngb-carousel *ngIf="array">
-      <ng-template *ngFor="let item of array" ngbSlide>
+    <ngb-carousel *ngIf="goodsForSlider$">
+      <ng-template *ngFor="let item of goodsForSlider$ | async" ngbSlide>
     <div class="slider_card">
       <div class="slider_image">
-        <img [src]="item.imageUrls[1]" alt="">
+        <img [src]="item.imageUrls[0]" alt="">
       </div>
       <div class="slider_description">
         <div class="top_section">
@@ -27,6 +27,13 @@
   <div class="popular_goods">
     <h3>Популярные товары</h3>
     <div class="popular_container">
+
+      <!-- <ngb-carousel *ngIf="goodsForPopularSlider$">
+        <ng-template *ngFor="let item of goodsForPopularSlider$ | async" ngbSlide>
+
+    </ng-template>
+  </ngb-carousel> -->
+
       <div class="popular_item">
         <img src="" alt="">
         <mat-icon>recommend</mat-icon>
