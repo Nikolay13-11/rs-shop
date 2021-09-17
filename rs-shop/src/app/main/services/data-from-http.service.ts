@@ -1,6 +1,5 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { Icategory } from 'src/app/core/models/categories.model';
 import { IDetail } from 'src/app/core/models/goods.model';
 import { HttpService } from './http.service';
 
@@ -9,9 +8,9 @@ import { HttpService } from './http.service';
 })
 export class DataFromHttpService {
 
-  constructor(private http: HttpService) {}
+  constructor(private http: HttpService) { }
 
-  private category = new BehaviorSubject<Icategory[]>([])
+  private category = new BehaviorSubject<any[]>([])
   private categories = new BehaviorSubject<any[]>([])
   private subCategories = new BehaviorSubject<string[]>([])
   private goods = new BehaviorSubject<any[]>([])
@@ -19,6 +18,7 @@ export class DataFromHttpService {
   private allGoodsArray = new BehaviorSubject<IDetail[]>([])
   private goodsForSlider = new BehaviorSubject<IDetail[]>([])
   private searchResult = new BehaviorSubject<any[]>([])
+  private allSubCategory = new BehaviorSubject<any[]>([])
 
   sharedCategory = this.category.asObservable()
   sharedCategories = this.categories.asObservable()
@@ -28,9 +28,10 @@ export class DataFromHttpService {
   sharedAllGoodsArray = this.allGoodsArray.asObservable()
   sharedGoodsForSlider = this.goodsForSlider.asObservable()
   sharedSearchResult = this.searchResult.asObservable()
+  sharedAllSubCategory = this.allSubCategory.asObservable()
 
 
-  nextCategory(input:any) {
+  nextCategory(input: any) {
     this.category.next(input)
   }
 
@@ -47,52 +48,65 @@ export class DataFromHttpService {
     this.nextGoodsForSlider()
   }
 
-  nextSubCategories(value:any) {
-    let arr:any[] = [];
-    value.forEach((cat:any) =>
-      cat.subCategories.forEach((subCat:any) => arr.push(subCat))
+  nextSubCategories(value: any) {
+    let arr: any[] = [];
+    value.forEach((cat: any) =>
+      cat.subCategories.forEach((subCat: any) => arr.push(subCat))
     )
   }
 
   updateSubCategory(option?: string) {
     let k: string[] = [];
-    this.category.value.find(item => item.name === option)?.subCategories.forEach(i => k.push(i.name));
+    this.category.value.find(item => item.name === option)?.subCategories.forEach((i: any) => k.push(i.name));
     this.subCategories.next(k)
   }
 
   nextAllGoodsArray() {
-    let a:any = (Object.entries(this.goods.value))
-    .flat()
-    .filter(i => typeof(i) != 'string')
-    .map(i => Object.entries(i)
-    .flat()
-    .filter(i => typeof(i) != 'string'))
-    .flat(2)
+    let a: any = (Object.entries(this.goods.value))
+      .flat()
+      .filter(i => typeof (i) != 'string')
+      .map(i => Object.entries(i)
+        .flat()
+        .filter(i => typeof (i) != 'string'))
+      .flat(2)
     this.allGoodsArray.next(a)
   }
 
   nextTopRateGoods() {
     let topRateItems = (this.allGoodsArray.value)
-    .filter(i => i.rating == 5)
+      .filter(i => i.rating == 5)
     this.topRateGoods.next(topRateItems)
-
-    console.log((this.category.value).flat(4))
   }
 
   nextGoodsForSlider() {
     let coaf = this.allGoodsArray.value.length;
     let arr = [];
-    let resultSliderArray:IDetail[] = []
-    for(let i = 0; i <= 9; i++) {
+    let resultSliderArray: IDetail[] = []
+    for (let i = 0; i <= 9; i++) {
       arr.push(Math.ceil(Math.random() * coaf))
     }
     arr.forEach(item => resultSliderArray.push(this.allGoodsArray.value[item]))
     this.goodsForSlider.next(resultSliderArray)
   }
 
-  mainSerch(input:string) {
-    let searchResultArray = [];
-    searchResultArray.push(this.allGoodsArray.value.filter(item => item.name.toLowerCase().includes(input.toLowerCase())));
-    this.searchResult.next(searchResultArray);
+  mainSerch(input: string) {
+    // let searchResultArray = [];
+    console.log(this.nextAllSubCategory(input))
+    if (input) {
+      this.searchResult.next(this.allGoodsArray.value.filter(item => item.name.toLowerCase().includes(input.toLowerCase())));
+    }
+    else {
+      this.searchResult.next([]);
+    }
+    // console.log(searchResultArray)
+    // this.searchResult.next(searchResultArray);
+  }
+
+  nextAllSubCategory(input: string) {
+    let a: any = Object.entries(this.category.value.map(i => i.subCategories).flat())
+      .forEach(i => i.filter(i => typeof (i) != 'string')
+        .filter(item => item.name.toLowerCase().includes(input.toLowerCase())))
+    console.log(a)
+    return a
   }
 }

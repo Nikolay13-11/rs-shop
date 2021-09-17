@@ -5,17 +5,19 @@ import { MatButtonModule } from '@angular/material/button';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { MatInputModule } from '@angular/material/input';
+import { MatListModule } from '@angular/material/list';
 import { MatMenuModule } from '@angular/material/menu';
 import { MatSliderModule } from '@angular/material/slider';
 
-const MaterialComponents:MaterialModule[] = [
+const MaterialComponents: MaterialModule[] = [
   MatMenuModule,
   MatInputModule,
   MatIconModule,
   MatSliderModule,
   MatButtonModule,
   MatFormFieldModule,
-  FormsModule
+  FormsModule,
+  MatListModule
 ];
 
 

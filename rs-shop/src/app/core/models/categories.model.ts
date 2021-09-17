@@ -10,7 +10,7 @@ export interface IsubCategories {
 
 export interface Icategory {
   id: string;
-  name:string;
+  name: string;
   subCategories: IsubCategories[]
 }
 

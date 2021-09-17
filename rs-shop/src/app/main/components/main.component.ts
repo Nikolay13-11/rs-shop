@@ -8,19 +8,19 @@ import { HttpService } from '../services/http.service';
   templateUrl: './main.component.html',
   styleUrls: ['./main.component.scss']
 })
-export class MainComponent implements OnInit{
+export class MainComponent implements OnInit {
   goodsForSlider$?: Observable<any>;
   categories$?: Observable<any>;
   goodsForPopularSlider$?: Observable<any>;
   currentRate = 6;
-  array = []
-  constructor(private http:HttpService, private dataService:DataFromHttpService) {}
+  array = [];
+  constructor(private http: HttpService, private dataService: DataFromHttpService) { }
 
   updateData() {
-    this.http.fetchCategories().subscribe( i =>
+    this.http.fetchCategories().subscribe(i =>
       this.dataService.nextcategories(i)
     )
-    this.http.fetchGoods().subscribe( i => this.dataService.nextGoods(i))
+    this.http.fetchGoods().subscribe(i => this.dataService.nextGoods(i))
   }
 
   getGoodsForSlider() {

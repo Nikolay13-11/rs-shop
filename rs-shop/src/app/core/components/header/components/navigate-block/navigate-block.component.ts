@@ -8,32 +8,42 @@ import { DataFromHttpService } from 'src/app/main/services/data-from-http.servic
   templateUrl: './navigate-block.component.html',
   styleUrls: ['./navigate-block.component.scss']
 })
-export class NavigateBlockComponent implements OnInit{
+export class NavigateBlockComponent implements OnInit {
 
-  value:string = '';
+  value: string = '';
   mainCategories$?: Observable<any>;
   subCategories$?: Observable<any[]>;
+  searchResult$?: Observable<any[]>;
 
 
-constructor(private dataService: DataFromHttpService, private inputService:InputSearchService) {
+  constructor(private dataService: DataFromHttpService, private inputService: InputSearchService) {
 
-}
+  }
 
-updateMainCategories() {
-  this.mainCategories$ = this.dataService.sharedCategories;
-}
+  updateMainCategories() {
+    this.mainCategories$ = this.dataService.sharedCategories;
+  }
 
-testLog(option:any) {
-  this.dataService.updateSubCategory(option)
-  this.subCategories$ = this.dataService.sharedSubCategories;
-}
+  testLog(option: any) {
+    this.dataService.updateSubCategory(option)
+    this.subCategories$ = this.dataService.sharedSubCategories;
+  }
 
-ngOnInit() {
-  this.updateMainCategories()
-}
+  updateSearchList() {
+    this.searchResult$ = this.dataService.sharedSearchResult
+  }
 
-updateSearchValue(event:any) {
-this.inputService.nextInputSearch(event)
-}
+  ngOnInit() {
+    this.updateSearchList()
+    this.updateMainCategories()
+  }
+
+  test() {
+    this.inputService.nextInputSearch('')
+  }
+
+  updateSearchValue(event: any) {
+    this.inputService.nextInputSearch(event)
+  }
 
 }

@@ -120,6 +120,7 @@
   },
   "defaultProject": "rs-shop",
   "cli": {
+    "analytics": "c491d7a8-6002-4add-88a1-99bd4da6df82",
     "defaultCollection": "@angular-eslint/schematics"
   }
 }

@@ -1,32 +1,38 @@
 <div class="navigate-block_container">
-    <div class="wrapper">
-      <div class="container_top">
-        <img class="logo" src="../../../../../../assets/icons/logo.svg" alt="">
+  <div class="wrapper">
+    <div class="container_top">
+      <img class="logo" src="../../../../../../assets/icons/logo.svg" alt="">
 
-        <button mat-button [matMenuTriggerFor]="mainCategories">Каталог товаров</button>
-        <!-- #docregion sub-menu -->
-        <mat-menu #mainCategories="matMenu">
-          <button mat-menu-item *ngFor="let item of mainCategories$ | async" (mouseenter)="testLog(item)" [matMenuTriggerFor]="q">{{item}}</button>
-        </mat-menu>
+      <button mat-button [matMenuTriggerFor]="mainCategories">Каталог товаров</button>
+      <!-- #docregion sub-menu -->
+      <mat-menu #mainCategories="matMenu">
+        <button mat-menu-item *ngFor="let item of mainCategories$ | async" (mouseenter)="testLog(item)"
+          [matMenuTriggerFor]="q">{{item}}</button>
+      </mat-menu>
 
-        <mat-menu #q="matMenu">
-          <button mat-menu-item *ngFor="let subItem of subCategories$ | async">{{subItem}}</button>
-        </mat-menu>
+      <mat-menu #q="matMenu">
+        <button mat-menu-item *ngFor="let subItem of subCategories$ | async">{{subItem}}</button>
+      </mat-menu>
 
-        <mat-form-field class="form_search" appearance="fill">
-          <mat-icon>search</mat-icon>
-          <mat-label>
-            Поиск товаров
-          </mat-label>
-          <input matInput type="text" [(ngModel)]="value"
-          (ngModelChange)="updateSearchValue($event)">
-          <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''">
-            <mat-icon>close</mat-icon>
-          </button>
-        </mat-form-field>
-        <app-profile></app-profile>
-        <button class="basket_btn" mat-stroked-button>Корзина</button>
-      </div>
-      </div>
-    <app-navigate-by-catigory></app-navigate-by-catigory>
+      <mat-form-field class="form_search" appearance="fill">
+        <mat-icon>search</mat-icon>
+        <mat-label>
+          Поиск товаров
+        </mat-label>
+        <input matInput type="text" [(ngModel)]="value" (ngModelChange)="updateSearchValue($event)">
+        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''; test()">
+          <mat-icon>close</mat-icon>
+        </button>
+      </mat-form-field>
+      <app-profile></app-profile>
+      <button class="basket_btn" mat-stroked-button>Корзина</button>
+    </div>
+  </div>
+  <div class="serch-result_container">
+    <ul>
+      <li *ngFor="let i of searchResult$ | async">{{i.name}}</li>
+    </ul>
+  </div>
+
+  <app-navigate-by-catigory></app-navigate-by-catigory>
 </div>
