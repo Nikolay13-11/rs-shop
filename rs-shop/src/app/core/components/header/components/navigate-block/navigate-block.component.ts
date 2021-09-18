@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { Observable } from 'rxjs';
 import { InputSearchService } from 'src/app/core/services/input-search.service';
 import { DataFromHttpService } from 'src/app/main/services/data-from-http.service';
@@ -17,7 +18,12 @@ export class NavigateBlockComponent implements OnInit {
   searchResult$?: Observable<any[]>;
 
 
-  constructor(private dataService: DataFromHttpService, private inputService: InputSearchService, private http: HttpService) {
+  constructor(
+    private dataService: DataFromHttpService,
+    private inputService: InputSearchService,
+    private http: HttpService,
+    private router: Router
+    ) {
 
   }
 
@@ -40,6 +46,10 @@ export class NavigateBlockComponent implements OnInit {
   }
 
   test() {
+    this.inputService.nextInputSearch('')
+  }
+
+  clickLink(inputId?:string, inputCat?:string) {
     this.inputService.nextInputSearch('')
   }
 

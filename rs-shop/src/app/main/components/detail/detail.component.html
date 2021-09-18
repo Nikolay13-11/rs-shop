@@ -1,15 +1,30 @@
 <div class="detail_component">
   <div class="wrapper">
     <h3>{{(item$ | async).name}}</h3>
-    <div class="slider">
-      <ngb-carousel>
-        <ng-template *ngFor="let item of (item$ | async).imageUrls" ngbSlide>
-          <div class="img-slider">
-            <img [src]="item" alt="">
-          </div>
-    </ng-template>
-  </ngb-carousel>
-
+    <div class="top-block_container">
+      <div class="slider">
+        <ngb-carousel>
+          <ng-template *ngFor="let item of (item$ | async).imageUrls" ngbSlide>
+            <div class="img-slider">
+              <img [src]="item" alt="">
+            </div>
+      </ng-template>
+    </ngb-carousel>
+    </div>
+    <div class="buttons_container">
+      <button>
+        <mat-icon>star</mat-icon>
+        Добавить в избранное
+      </button>
+      <button mat-stroked-button>В Корзину</button>
+      </div>
+    </div>
+    <div class="btn_container">
+      <p>Обзор</p>
+      <div class="container"></div>
+    </div>
+    <div class="description">
+      <p>{{(item$ | async).description}}</p>
     </div>
   </div>
 </div>

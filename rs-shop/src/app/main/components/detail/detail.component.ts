@@ -17,14 +17,12 @@ export class DetailComponent implements OnInit{
   }
 
   updateItem() {
+    const  { goodId }  = this.router.snapshot.params;
+    this.dataService.nextGoodsItem(goodId)
     this.item$ = this.dataService.sharedGoodsItem
-    const  { categoryId }  = this.router.snapshot.params;
-    console.log(categoryId)
   }
 
 ngOnInit() {
-
-  this.dataService.nextGoodsItem('612e05c53fe9dca845d677fc')
   this.updateItem()
 }
 }

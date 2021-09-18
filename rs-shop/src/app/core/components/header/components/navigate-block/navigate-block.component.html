@@ -29,10 +29,14 @@
     </div>
   </div>
   <div class="serch-result_container">
-    <ul>
-      <li *ngFor="let i of searchResult$ | async">{{i.name}}</li>
+    <ul class="search-list">
+      <li *ngFor="let i of searchResult$ | async">
+        <!-- <a routerLink='categories'>{{i.name}}</a> -->
+        <button routerLink='/categories/{{i.category}}/{{i.id}}'
+        (click)="clickLink()"> {{i.name}}</button>
+      </li>
     </ul>
   </div>
-
+  <!-- (click)="test_btn(i.id,i.category)" -->
   <app-navigate-by-catigory></app-navigate-by-catigory>
 </div>
