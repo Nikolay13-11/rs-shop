@@ -1,1 +1,10 @@
-<p>catigories works!</p>
+<div class="catigories-block_container">
+  <div class="wrapper">
+    <div class="cat-list_container">
+      <div class="cat-item" *ngFor="let subCat of subCategories$ | async"
+      routerLink='/{{cat}}/{{subCat.id}}'>
+        <p>{{subCat.name}}</p>
+      </div>
+    </div>
+  </div>
+</div>

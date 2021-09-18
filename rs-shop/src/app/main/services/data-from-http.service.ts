@@ -1,5 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
+import { IsubCategories } from 'src/app/core/models/categories.model';
 import { IDetail, IGoodsItem } from 'src/app/core/models/goods.model';
 import { HttpService } from './http.service';
 
@@ -12,6 +13,8 @@ export class DataFromHttpService {
 
   private category = new BehaviorSubject<any[]>([])
   private categories = new BehaviorSubject<any[]>([])
+  private categoryById = new BehaviorSubject<any>(null)
+  private subCategoryById = new BehaviorSubject<any>(null)
   private subCategories = new BehaviorSubject<string[]>([])
   private goods = new BehaviorSubject<any[]>([])
   private topRateGoods = new BehaviorSubject<IDetail[]>([])
@@ -20,6 +23,7 @@ export class DataFromHttpService {
   private searchResult = new BehaviorSubject<any[]>([])
   private allSubCategory = new BehaviorSubject<any[]>([])
   private goodsItem = new BehaviorSubject<IGoodsItem[]>([])
+  private goodsByCategory = new BehaviorSubject<IsubCategories[]>([])
 
   sharedCategory = this.category.asObservable()
   sharedCategories = this.categories.asObservable()
@@ -31,6 +35,9 @@ export class DataFromHttpService {
   sharedSearchResult = this.searchResult.asObservable()
   sharedAllSubCategory = this.allSubCategory.asObservable()
   sharedGoodsItem = this.goodsItem.asObservable()
+  sharedGoodsByCategory = this.goodsByCategory.asObservable()
+  sharedCategoryById = this.categoryById.asObservable()
+  sharedSubCategoryById = this.subCategoryById.asObservable()
 
 
   nextCategory(input: any) {
@@ -41,8 +48,14 @@ export class DataFromHttpService {
     let arr: any[] = []
     this.category.next(value)
     value.forEach((item: any) => arr.push(item.name))
-    this.categories.next(arr)
+    this.categories.next(value)
   }
+
+  nextCategoryById(id: number) {
+    this.categoryById.next(this.categories.value.find(item => item.id === id));
+    this.subCategoryById.next(this.categoryById.value.subCategories);
+  }
+
   nextGoods(value: any) {
     this.goods.next(value)
     this.nextAllGoodsArray()
@@ -117,5 +130,11 @@ export class DataFromHttpService {
     this.http.fetchGoodItem(id).subscribe(
       i => this.goodsItem.next(i)
     )
+  }
+  nextGoodsByCategory(cat:string) {
+    this.http.fetchGoodItemByCategory(cat).subscribe(
+      i => this.goodsByCategory.next(i)
+    )
+    console.log(this.goodsByCategory)
   }
 }

@@ -36,6 +36,15 @@ export class HttpService {
     return this.http.get<any>(`${this.baseUrl}goods/item/${id}`, {
     })
   }
+  fetchGoodItemByCategory(catId:string, start?:number, count?:number):Observable<any> {
+    let params = new HttpParams()
+    params = params.append('start', `${start}`)
+    params = params.append('count', `${count}`)
+    return this.http.get<any>(`${this.baseUrl}goods/category/${catId}`, {
+      params
+    })
+  }
+
 
 
 }

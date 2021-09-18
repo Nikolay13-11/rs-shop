@@ -1,3 +1,4 @@
+@import "./app/core/constatnts/styles/core-style.scss";
 /* You can add global styles to this file, and also import other style files */
 @import "~@angular/material/prebuilt-themes/deeppurple-amber.css";
 
@@ -13,4 +14,9 @@ body {
     font-family: Roboto, "Helvetica Neue", sans-serif;
 }
 .mat-form-field-label-wrapper {
+}
+
+.wrapper {
+    width: $wrapper;
+    margin: 0 auto;
 }

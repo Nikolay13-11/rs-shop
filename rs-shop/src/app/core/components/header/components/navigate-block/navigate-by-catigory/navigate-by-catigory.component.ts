@@ -8,14 +8,14 @@ import { DataFromHttpService } from 'src/app/main/services/data-from-http.servic
   styleUrls: ['./navigate-by-catigory.component.scss']
 })
 export class NavigateByCatigoryComponent implements OnInit{
-mainCategories$?: Observable<any>;
+categories$?: Observable<any>;
 
 constructor(private dataService: DataFromHttpService) {
 
 }
 
 updateMainCategories() {
-  this.mainCategories$ = this.dataService.sharedCategories;
+  this.categories$ = this.dataService.sharedCategories;
 }
 
 ngOnInit() {

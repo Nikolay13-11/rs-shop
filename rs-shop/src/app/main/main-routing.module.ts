@@ -11,15 +11,15 @@ const routes: Routes = [
     component: StartPageComponent
   },
   {
-    path: 'categories',
+    path: ':categoriesId',
     component: CatigoriesComponent,
   },
   {
-    path: 'categories/:categoryId',
+    path: ':categoriesId/:categoryId',
     component: CatigoryComponent,
   },
   {
-    path: 'categories/:categoryId/:goodId',
+    path: ':categoriesId/:categoryId/:goodId',
     component: DetailComponent,
   }
 ];
