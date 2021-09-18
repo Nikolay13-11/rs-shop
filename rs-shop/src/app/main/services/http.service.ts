@@ -1,4 +1,4 @@
-import { HttpClient } from '@angular/common/http';
+import { HttpClient, HttpParams } from '@angular/common/http';
 import { Injectable } from '@angular/core';
 import { Observable } from 'rxjs';
 import { IGoods } from 'src/app/core/models/goods.model';
@@ -24,6 +24,17 @@ export class HttpService {
 
   fetchGoods(): Observable<IGoods[]> {
     return this.http.get<IGoods[]>(`${this.baseUrl}goods`)
+  }
+
+  searchItems(value:string):Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}goods/search`, {
+      params: new HttpParams().set('text', value)
+    })
+  }
+
+  fetchGoodItem(id:string):Observable<any> {
+    return this.http.get<any>(`${this.baseUrl}goods/item/${id}`, {
+    })
   }
 
 

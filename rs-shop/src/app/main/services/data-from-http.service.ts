@@ -1,6 +1,6 @@
 import { Injectable } from '@angular/core';
 import { BehaviorSubject } from 'rxjs';
-import { IDetail } from 'src/app/core/models/goods.model';
+import { IDetail, IGoodsItem } from 'src/app/core/models/goods.model';
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -19,6 +19,7 @@ export class DataFromHttpService {
   private goodsForSlider = new BehaviorSubject<IDetail[]>([])
   private searchResult = new BehaviorSubject<any[]>([])
   private allSubCategory = new BehaviorSubject<any[]>([])
+  private goodsItem = new BehaviorSubject<IGoodsItem[]>([])
 
   sharedCategory = this.category.asObservable()
   sharedCategories = this.categories.asObservable()
@@ -29,6 +30,7 @@ export class DataFromHttpService {
   sharedGoodsForSlider = this.goodsForSlider.asObservable()
   sharedSearchResult = this.searchResult.asObservable()
   sharedAllSubCategory = this.allSubCategory.asObservable()
+  sharedGoodsItem = this.goodsItem.asObservable()
 
 
   nextCategory(input: any) {
@@ -74,13 +76,13 @@ export class DataFromHttpService {
 
   nextTopRateGoods() {
     let topRateItems = (this.allGoodsArray.value)
-      .filter(i => i.rating == 5)
+      .filter(i => i.rating == 5 && i.imageUrls[0])
     this.topRateGoods.next(topRateItems)
   }
 
   nextGoodsForSlider() {
     let coaf = this.allGoodsArray.value.length;
-    let arr = [];
+    let arr: number[] = [];
     let resultSliderArray: IDetail[] = []
     for (let i = 0; i <= 9; i++) {
       arr.push(Math.ceil(Math.random() * coaf))
@@ -91,9 +93,10 @@ export class DataFromHttpService {
 
   mainSerch(input: string) {
     // let searchResultArray = [];
-    console.log(this.nextAllSubCategory(input))
     if (input) {
-      this.searchResult.next(this.allGoodsArray.value.filter(item => item.name.toLowerCase().includes(input.toLowerCase())));
+      this.http.searchItems(input).subscribe(
+        i => this.searchResult.next(i)
+      )
     }
     else {
       this.searchResult.next([]);
@@ -108,5 +111,11 @@ export class DataFromHttpService {
         .filter(item => item.name.toLowerCase().includes(input.toLowerCase())))
     console.log(a)
     return a
+  }
+
+  nextGoodsItem(id:string) {
+    this.http.fetchGoodItem(id).subscribe(
+      i => this.goodsItem.next(i)
+    )
   }
 }

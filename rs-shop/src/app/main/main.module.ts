@@ -8,6 +8,8 @@ import { FavoritesComponent } from './components/favorites/favorites.component';
 import { MainComponent } from './components/main.component';
 import { WaitListComponent } from './components/wait-list/wait-list.component';
 import { MainRoutingModule } from './main-routing.module';
+import { StartPageComponent } from './components/start-page/start-page.component';
+import { CatigoriesComponent } from './components/catigories/catigories.component';
 // import { NgbdRatingBasic } from './rating-basic';
 
 
@@ -18,7 +20,9 @@ import { MainRoutingModule } from './main-routing.module';
     CatigoryComponent,
     DetailComponent,
     FavoritesComponent,
-    WaitListComponent
+    WaitListComponent,
+    StartPageComponent,
+    CatigoriesComponent
   ],
   imports: [
     CommonModule,

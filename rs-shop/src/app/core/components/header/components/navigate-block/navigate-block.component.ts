@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs';
 import { InputSearchService } from 'src/app/core/services/input-search.service';
 import { DataFromHttpService } from 'src/app/main/services/data-from-http.service';
+import { HttpService } from 'src/app/main/services/http.service';
 
 @Component({
   selector: 'app-navigate-block',
@@ -16,7 +17,7 @@ export class NavigateBlockComponent implements OnInit {
   searchResult$?: Observable<any[]>;
 
 
-  constructor(private dataService: DataFromHttpService, private inputService: InputSearchService) {
+  constructor(private dataService: DataFromHttpService, private inputService: InputSearchService, private http: HttpService) {
 
   }
 

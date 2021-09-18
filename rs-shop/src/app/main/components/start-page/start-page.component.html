@@ -1,0 +1,90 @@
+<div class="wrapper">
+  <div class="main_slider">
+    <ngb-carousel *ngIf="goodsForSlider$">
+      <ng-template *ngFor="let item of goodsForSlider$ | async" ngbSlide>
+    <div class="slider_card">
+      <div class="slider_image">
+        <img [src]="item.imageUrls[0]" alt="">
+      </div>
+      <div class="slider_description">
+        <div class="top_section">
+          <p>Iphone 12</p>
+          <p>Во-первых, это быстро.</p>
+        </div>
+        <div class="bottom_section">
+          <div class="benefit">
+            <p class="benefitBefor">Выгода до</p>
+            <p class="benefit_count">300</p>
+            <p class="benefit_currency">руб</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ngb-carousel>
+  </div>
+
+  <div class="popular_goods">
+    <h3>Популярные товары</h3>
+    <div class="popular_container">
+      <!-- *ngIf="goodsForPopularSlider$" -->
+      <ngb-carousel>
+        <ng-template *ngFor="let it of a; index as i" ngbSlide>
+          <div class="car_flex">
+            <div class="popular_item">
+              <img [src]="(goodsForPopularSlider$ | async)[i+1].imageUrls[0]" alt="">
+              <mat-icon>recommend</mat-icon>
+              <a href=""></a>
+              <ngb-rating [(rate)]="currentRate" [max]="5"></ngb-rating>
+              <p>123 р</p>
+            </div>
+            <div class="popular_item">
+              <img [src]="(goodsForPopularSlider$ | async)[(i*6) + 1].imageUrls[0]" alt="">
+              <mat-icon>recommend</mat-icon>
+              <a href=""></a>
+              <ngb-rating [(rate)]="currentRate" [max]="5"></ngb-rating>
+              <p>123 р</p>
+            </div>
+            <div class="popular_item">
+              <img [src]="(goodsForPopularSlider$ | async)[(i*6) + 2].imageUrls[0]" alt="">
+              <mat-icon>recommend</mat-icon>
+              <a href=""></a>
+              <ngb-rating [(rate)]="currentRate" [max]="5"></ngb-rating>
+              <p>123 р</p>
+            </div>
+            <div class="popular_item">
+              <img [src]="(goodsForPopularSlider$ | async)[(i*6) + 3].imageUrls[0]" alt="">
+              <mat-icon>recommend</mat-icon>
+              <a href=""></a>
+              <ngb-rating [(rate)]="currentRate" [max]="5"></ngb-rating>
+              <p>123 р</p>
+            </div>
+            <div class="popular_item">
+              <img [src]="(goodsForPopularSlider$ | async)[(i*6) + 4].imageUrls[0]" alt="">
+              <mat-icon>recommend</mat-icon>
+              <a href=""></a>
+              <ngb-rating [(rate)]="currentRate" [max]="5"></ngb-rating>
+              <p>123 р</p>
+            </div>
+            <div class="popular_item">
+              <img [src]="(goodsForPopularSlider$ | async)[(i*6) + 5].imageUrls[0]" alt="">
+              <mat-icon>recommend</mat-icon>
+              <a href=""></a>
+              <ngb-rating [(rate)]="currentRate" [max]="5"></ngb-rating>
+              <p>123 р</p>
+            </div>
+          </div>
+          <!-- <img [src]={{goodsForPopularSlider$[o].imageUrls[0] | async}} alt=""> -->
+          <!-- <p>{{(goodsForPopularSlider$ | async)[0].imageUrls[0]}}</p> -->
+          <!-- <p>{{(goodsForPopularSlider$ | async)[i+].imageUrls[0]}}</p> -->
+        </ng-template>
+      </ngb-carousel>
+    </div>
+    </div>
+  </div>
+
+
+
+
+
+
