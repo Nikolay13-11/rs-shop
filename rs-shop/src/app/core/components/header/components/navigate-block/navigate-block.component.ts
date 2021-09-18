@@ -15,6 +15,7 @@ export class NavigateBlockComponent implements OnInit {
   value: string = '';
   mainCategories$?: Observable<any>;
   subCategories$?: Observable<any[]>;
+  catById:string = '';
   searchResult$?: Observable<any[]>;
 
 
@@ -31,9 +32,15 @@ export class NavigateBlockComponent implements OnInit {
     this.mainCategories$ = this.dataService.sharedCategories;
   }
 
-  testLog(option: any) {
-    this.dataService.updateSubCategory(option)
-    this.subCategories$ = this.dataService.sharedSubCategories;
+  // testLog(option: any) {
+  //   this.dataService.updateSubCategory(option)
+  //   // this.subCategories$ = this.dataService.sharedSubCategories;
+  // }
+
+  updateSubCategoryById(id:string) {
+    this.dataService.nextCategoryById(id);
+    this.subCategories$ = this.dataService.sharedSubCategoryById
+    this.catById = id
   }
 
   updateSearchList() {
@@ -49,7 +56,7 @@ export class NavigateBlockComponent implements OnInit {
     this.inputService.nextInputSearch('')
   }
 
-  clickLink(inputId?:string, inputCat?:string) {
+  clickLink() {
     this.inputService.nextInputSearch('')
   }
 

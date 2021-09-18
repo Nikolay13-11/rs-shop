@@ -6,16 +6,16 @@
       <button mat-button [matMenuTriggerFor]="mainCategories">Каталог товаров</button>
       <!-- #docregion sub-menu -->
       <mat-menu #mainCategories="matMenu">
-        <button mat-menu-item *ngFor="let item of mainCategories$ | async" (mouseenter)="testLog(item)"
+        <button mat-menu-item *ngFor="let item of mainCategories$ | async" (mouseenter)="updateSubCategoryById(item.id)"
           [matMenuTriggerFor]="q"
           routerLink='/{{item.id}}'
           >{{item.name}}</button>
       </mat-menu>
-
       <mat-menu #q="matMenu">
-        <button mat-menu-item *ngFor="let subItem of subCategories$ | async">{{subItem}}</button>
+        <button mat-menu-item *ngFor="let subItem of subCategories$ | async"
+        routerLink='/{{catById}}/{{subItem.id}}'
+        >{{subItem.name}}</button>
       </mat-menu>
-
       <mat-form-field class="form_search" appearance="fill">
         <mat-icon>search</mat-icon>
         <mat-label>
