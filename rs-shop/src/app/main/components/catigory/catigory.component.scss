@@ -1,0 +1,20 @@
+.catigory-block_container {
+    h3 {
+        margin: 10px auto;
+    }
+}
+.category-items_container {
+    display: flex;
+    flex-wrap: wrap;
+    .item {
+        margin: 10px;
+    }
+    img {
+        // width: 160px;
+        height: 160px;
+        cursor: pointer;
+    }
+    .item-name {
+        cursor: pointer;
+    }
+}

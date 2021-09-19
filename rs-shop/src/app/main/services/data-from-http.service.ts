@@ -131,10 +131,9 @@ export class DataFromHttpService {
       i => this.goodsItem.next(i)
     )
   }
-  nextGoodsByCategory(cat:string) {
-    this.http.fetchGoodItemByCategory(cat).subscribe(
+  nextGoodsByCategory(cat:string, subCat:string) {
+    this.http.fetchGoodItemByCategory(cat, subCat).subscribe(
       i => this.goodsByCategory.next(i)
     )
-    console.log(this.goodsByCategory)
   }
 }

@@ -1,1 +1,19 @@
-<p>catigory works!</p>
+<div class="catigory-block_container">
+  <div class="wrapper">
+    <h3>{{subCategory}}</h3>
+    <div class="category-items_container">
+      <div class="item" *ngFor="let item of goodsByCatigory$| async">
+        <img [src]="item.imageUrls[0]" alt="" (click)="navigate(item.id)">
+        <p class="item-name" (click)="navigate(item.id)">{{item.name}}</p>
+        <p>
+          <mat-icon>check_circle</mat-icon>
+          В наличии
+        </p>
+        <p>{{item.price}}</p>
+        <ngb-rating [(rate)]="item.rating" [max]="5"></ngb-rating>
+        <button class="basket_btn" mat-stroked-button>В корзину</button>
+        <button>В избранное</button>
+      </div>
+    </div>
+  </div>
+</div>
