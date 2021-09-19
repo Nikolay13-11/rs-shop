@@ -3,6 +3,24 @@
         margin: 10px auto;
     }
 }
+
+.sort_container {
+    display: flex;
+    align-items: center;
+    p {
+        height: 30px;
+    }
+    button {
+        height: 30px;
+        border: none;
+        background: none;
+        cursor: pointer;
+    }
+    button:hover {
+        color: rgb(238, 45, 151);
+    }
+}
+
 .category-items_container {
     display: flex;
     flex-wrap: wrap;
