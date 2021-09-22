@@ -98,6 +98,7 @@
     span {
     }
 }
+
 .test {
     width: auto;
 }
@@ -109,11 +110,13 @@
 
 .flex {
     display: flex;
+    margin: 5px;
 }
 
 .flex-btn {
     display: flex;
     padding: 0;
+    margin-left: 5px;
     span {
         font-size: 17px;
     }
@@ -121,5 +124,16 @@
 
 .contact {
     padding: 0;
-    text-align: center;
+    font-size: 17px;
+    margin-left: 30px;
+}
+
+.more-block {
+    width: 400px;
+}
+
+.sep {
+    height: 1px;
+    background-color: rgba(213, 215, 219, 0.4);
+    margin: auto;
 }

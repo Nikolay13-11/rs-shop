@@ -1,6 +1,7 @@
 .contact_block {
     display: flex;
     align-items: center;
+    justify-content: space-around;
 }
 
 .viber:hover,
@@ -9,4 +10,18 @@
 .contact_us:hover {
     color: rgb(238, 45, 151);
     cursor: pointer;
+}
+
+.teleg {
+    width: 24px;
+    height: 24px;
+}
+
+.viber {
+    svg {
+        color: #7c53a6;
+    }
+    span {
+        color: #7c53a6;
+    }
 }

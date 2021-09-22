@@ -8,6 +8,7 @@
 html,
 body {
     height: 100%;
+    overflow-x: hidden;
 }
 body {
     margin: 0;
@@ -19,4 +20,46 @@ body {
 .wrapper {
     width: $wrapper;
     margin: 0 auto;
+}
+
+.mat-menu-content:not(:empty) {
+    width: 250px;
+    overflow-x: hidden;
+}
+
+.mat-button {
+    &.button-open {
+        width: 160px;
+        height: 42px;
+        border: 1px solid rgb(176, 173, 173);
+        border-radius: 40px;
+    }
+}
+
+.mat-stroked-button {
+    border: none;
+}
+
+.carousel-indicators li {
+    width: 15px;
+    height: 15px;
+    border-radius: 50%;
+}
+
+.carousel-indicators {
+    margin: 0;
+    background-color: rgba(213, 215, 219, 0.4);
+}
+
+.carousel-indicators .active {
+    background-color: #e52e6b;
+}
+
+.carousel-item {
+    height: 500px;
+}
+
+.carousel {
+    border: 1px solid rgba(213, 215, 219, 0.4);
+    border-radius: 5px;
 }

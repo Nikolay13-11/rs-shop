@@ -2,7 +2,7 @@
   <div class="wrapper">
     <ul>
       <li *ngFor="let item of categories$ | async">
-        <button class="basket_btn" mat-stroked-button
+        <button class="basket_btn" style="border: none;" mat-stroked-button
         routerLink='/{{item.id}}'>{{item.name}}</button>
       </li>
     </ul>

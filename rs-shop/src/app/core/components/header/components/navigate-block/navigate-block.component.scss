@@ -3,9 +3,6 @@
 .wrapper {
     width: $wrapper;
     margin: 0 auto;
-    display: flex;
-    align-items: center;
-    height: 100%;
 }
 
 .navigate-block_container {
@@ -15,6 +12,7 @@
 .container_top {
     display: flex;
     align-items: center;
+    justify-content: space-between;
 }
 
 .logo {
@@ -40,6 +38,8 @@
 .basket_btn {
     height: $btnHeight;
     width: 110px;
+    border: 1px solid rgb(176, 173, 173);
+    border-radius: 40px;
 }
 
 // 160x45

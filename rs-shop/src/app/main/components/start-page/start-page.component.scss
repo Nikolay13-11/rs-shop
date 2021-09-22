@@ -7,19 +7,30 @@
 
 .main_slider {
     width: 730;
-    height: 370;
-    background-color: aqua;
+    height: 450;
 }
 
 .popular_goods {
+    margin-top: 10px;
+    h3 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
 }
 
 .slider_card {
     display: flex;
+    align-items: center;
+    justify-content: space-between;
 }
 
 .slider_image {
     margin: 40px;
+    max-width: 50%;
+    img {
+        max-height: 80%;
+        max-width: 500px;
+    }
 }
 
 .slider_description {
@@ -35,11 +46,12 @@
     p {
         font-size: 30px;
         font-weight: 500;
+        width: 500px;
     }
 }
 
 .benefit {
-    width: 300px;
+    width: 400px;
     height: 80px;
     border-radius: 10px;
     background-color: violet;
@@ -71,5 +83,46 @@
 }
 
 .popular_container {
-    background-color: darkgoldenrod;
+    height: 450px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 1000px;
+    border: 1px solid rgba(213, 215, 219, 0.4);
+}
+
+.popular_item {
+    transition: transform 0.5s ease-in-out;
+    width: 255px;
+    height: 190px;
+    margin: 5px;
+    display: flex;
+    img {
+        width: 80px;
+        height: 100%;
+    }
+}
+
+.pop_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// .img_cont {
+//     display: flex;
+// }
+
+.info_cont {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.recomend {
+    color: #e52e6b;
 }

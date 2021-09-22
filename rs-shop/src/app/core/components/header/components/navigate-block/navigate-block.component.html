@@ -3,7 +3,7 @@
     <div class="container_top">
       <img class="logo" src="../../../../../../assets/icons/logo.svg" alt=""
       routerLink=''>
-      <button mat-button [matMenuTriggerFor]="mainCategories">Каталог товаров</button>
+      <button mat-button class="button-open" [matMenuTriggerFor]="mainCategories">Каталог товаров</button>
       <!-- #docregion sub-menu -->
       <mat-menu #mainCategories="matMenu">
         <button mat-menu-item *ngFor="let item of mainCategories$ | async" (mouseenter)="updateSubCategoryById(item.id)"
