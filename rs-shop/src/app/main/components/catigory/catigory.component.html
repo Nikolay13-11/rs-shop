@@ -1,7 +1,7 @@
 <div class="catigory-block_container">
   <div class="wrapper">
     <div class="sort_container">
-      <p>Сортировать по</p>
+      <span>Сортировать по:</span>
       <button>популярности</button>
       <button>цене</button>
     </div>
@@ -9,15 +9,15 @@
     <div class="category-items_container">
       <div class="item" *ngFor="let item of goodsByCatigory$| async">
         <img [src]="item.imageUrls[0]" alt="" (click)="navigate(item.id)">
-        <p class="item-name" (click)="navigate(item.id)">{{item.name}}</p>
+        <span class="item-name" (click)="navigate(item.id)">{{item.name}}</span>
         <p>
           <mat-icon appChangeAvailabilityState [availableAmount]="item.availableAmount">check_circle</mat-icon>
           В наличии
         </p>
-        <p>{{item.price}}</p>
+        <span>{{item.price}}</span>
         <ngb-rating [(rate)]="item.rating" [max]="5"></ngb-rating>
         <button class="basket_btn" mat-stroked-button>В корзину</button>
-        <button>В избранное</button>
+        <button class="addFavorite">В избранное</button>
       </div>
     </div>
   </div>

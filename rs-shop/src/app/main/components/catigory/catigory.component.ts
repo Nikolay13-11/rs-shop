@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
+
 import { Observable } from 'rxjs';
+
 import { DataFromHttpService } from '../../services/data-from-http.service';
 
 @Component({
@@ -23,8 +25,10 @@ export class CatigoryComponent implements OnInit{
   updateCategory() {
     const  { categoriesId, categoryId }  = this.activeRoute.snapshot.params;
     this.subCategory = categoryId;
+
     this.dataService.nextGoodsByCategory(categoriesId, categoryId)
     this.goodsByCatigory$ = this.dataService.sharedGoodsByCategory
+    console.log(this.dataService.sharedSubCategories)
     // this.categoryById$ = this.dataService.sharedCategoryById
     // this.subCategoryById$ = this.dataService.sharedSubCategoryById
   }

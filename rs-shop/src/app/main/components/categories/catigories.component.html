@@ -3,7 +3,7 @@
     <div class="cat-list_container">
       <div class="cat-item" *ngFor="let subCat of subCategories$ | async"
       routerLink='/{{cat}}/{{subCat.id}}'>
-        <p>{{subCat.name}}</p>
+      <span>{{subCat.name}}</span>
       </div>
     </div>
   </div>
