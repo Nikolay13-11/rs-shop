@@ -16,27 +16,36 @@
         routerLink='/{{catById}}/{{subItem.id}}'
         >{{subItem.name}}</button>
       </mat-menu>
-      <mat-form-field class="form_search" appearance="fill">
+      <!-- <mat-form-field class="form_search" appearance="fill">
         <mat-icon>search</mat-icon>
         <mat-label>
           Поиск товаров
         </mat-label>
-        <input matInput type="text" [(ngModel)]="value" (ngModelChange)="updateSearchValue($event)">
+        <input matInput class="input-search" type="text" [(ngModel)]="value" (ngModelChange)="updateSearchValue($event)">
         <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''; test()">
           <mat-icon>close</mat-icon>
         </button>
-      </mat-form-field>
+      </mat-form-field> -->
+      <div class="search_container">
+        <mat-icon class="search-icon">search</mat-icon>
+        <mat-icon class="clear-input" *ngIf="value" (click)="value=''; test()">close</mat-icon>
+        <input type="text" class="input-search" placeholder="Поиск товаров" [(ngModel)]="value" (ngModelChange)="updateSearchValue($event)">
+      </div>
       <app-profile></app-profile>
       <button class="basket_btn" mat-stroked-button
       routerLink='/orders'>Корзина</button>
     </div>
   </div>
-  <div class="serch-result_container">
+  <div class="serch-result_container" *ngIf="value">
     <ul class="search-list">
       <li *ngFor="let i of searchResult$ | async">
         <!-- <a routerLink='categories'>{{i.name}}</a> -->
-        <button routerLink='/{{i.category}}/{{i.subCategory}}/{{i.id}}'
-        (click)="clickLink()"> {{i.name}}</button>
+        <div>
+          <img [src]="i.imageUrls[0]" alt="">
+          <button routerLink='/{{i.category}}/{{i.subCategory}}/{{i.id}}'
+          (click)="clickLink()"> {{i.name}}</button>
+        </div>
+        <span>{{i.price | currency:'BYN':'symbol-narrow'}}</span>
       </li>
     </ul>
   </div>

@@ -1,5 +1,7 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Observable } from 'rxjs';
+
 import { DataFromHttpService } from '../../services/data-from-http.service';
 import { HttpService } from '../../services/http.service';
 
@@ -16,6 +18,10 @@ export class StartPageComponent  implements OnInit{
   array = [];
   b = 0
   a = new Array(12)
+  move?:string;
+  activeIndex = 0
+  count = 0;
+
   constructor(private http: HttpService, private dataService: DataFromHttpService) { }
 
   updateData() {
@@ -28,7 +34,6 @@ export class StartPageComponent  implements OnInit{
   getGoodsForSlider() {
     this.goodsForSlider$ = this.dataService.sharedGoodsForSlider
     this.goodsForPopularSlider$ = this.dataService.sharedTopRateGoods
-    this.b = Object.entries(this.goodsForPopularSlider$)[1].length;
   }
 
   ngOnInit() {
@@ -36,5 +41,23 @@ export class StartPageComponent  implements OnInit{
     this.getGoodsForSlider()
   }
 
+  movePopularSlider(dir:string) {
+
+    if (dir === 'right' && this.count > 0) {
+      this.count--
+        this.activeIndex = this.activeIndex + 885
+        this.move = `translateX(${this.activeIndex}px)`
+        console.log(this.move)
+
+    }
+    else if (dir === 'left' && this.count < 13) {
+      this.count++
+        this.activeIndex = this.activeIndex - 885
+        this.move = `translateX(${this.activeIndex}px)`
+        console.log(this.move)
+
+    }
+    console.log(this.count)
+  }
 
 }

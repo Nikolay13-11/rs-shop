@@ -83,14 +83,14 @@
 }
 
 .popular_container {
-    height: 450px;
+    height: 465px;
     overflow: hidden;
     display: flex;
     flex-wrap: wrap;
     align-items: center;
     justify-content: center;
     flex-direction: column;
-    width: 1000px;
+    width: 885px;
     border: 1px solid rgba(213, 215, 219, 0.4);
 }
 
@@ -98,7 +98,7 @@
     transition: transform 0.5s ease-in-out;
     width: 255px;
     height: 190px;
-    margin: 5px;
+    margin: 20px;
     display: flex;
     img {
         width: 80px;
@@ -124,5 +124,14 @@
 }
 
 .recomend {
+    color: #e52e6b;
+}
+
+.arr {
+    font-size: 60px;
+    cursor: pointer;
+}
+
+.arr:hover {
     color: #e52e6b;
 }

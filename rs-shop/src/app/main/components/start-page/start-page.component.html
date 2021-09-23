@@ -26,9 +26,9 @@
   <div class="popular_goods">
     <h3>Популярные товары</h3>
     <div class="pop_container">
-      <button>l</button>
+      <mat-icon class="arr" (click)="movePopularSlider('left')">arrow_back_ios</mat-icon>
       <div class="popular_container">
-        <div class="popular_item" *ngFor="let item of goodsForPopularSlider$ | async">
+        <div class="popular_item" [style.transform]="move" *ngFor="let item of goodsForPopularSlider$ | async">
             <img [src]="item.imageUrls[0]" alt="">
             <mat-icon class="recomend">recommend</mat-icon>
           <div class="info_cont">
@@ -38,7 +38,7 @@
           </div>
         </div>
     </div>
-    <button>r</button>
+    <mat-icon class="arr" (click)="movePopularSlider('right')">arrow_forward_ios</mat-icon>
     </div>
     </div>
   </div>

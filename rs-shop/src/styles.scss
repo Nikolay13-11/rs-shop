@@ -8,7 +8,6 @@
 html,
 body {
     height: 100%;
-    overflow-x: hidden;
 }
 body {
     margin: 0;
@@ -62,4 +61,8 @@ body {
 .carousel {
     border: 1px solid rgba(213, 215, 219, 0.4);
     border-radius: 5px;
+}
+
+.mat-form-field-wrapper {
+    padding: 0;
 }
