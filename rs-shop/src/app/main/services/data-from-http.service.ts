@@ -1,7 +1,9 @@
 import { Injectable } from '@angular/core';
+
 import { BehaviorSubject } from 'rxjs';
 import { IsubCategories } from 'src/app/core/models/categories.model';
 import { IDetail, IGoodsItem } from 'src/app/core/models/goods.model';
+
 import { HttpService } from './http.service';
 
 @Injectable({
@@ -11,7 +13,6 @@ export class DataFromHttpService {
 
   constructor(private http: HttpService) { }
 
-  // private category = new BehaviorSubject<any[]>([])
   private categories = new BehaviorSubject<any[]>([])
   private categoryById = new BehaviorSubject<any>(null)
   private subCategoryById = new BehaviorSubject<any>(null)
@@ -21,11 +22,13 @@ export class DataFromHttpService {
   private allGoodsArray = new BehaviorSubject<IDetail[]>([])
   private goodsForSlider = new BehaviorSubject<IDetail[]>([])
   private searchResult = new BehaviorSubject<any[]>([])
-  // private allSubCategory = new BehaviorSubject<any[]>([])
   private goodsItem = new BehaviorSubject<IGoodsItem[]>([])
   private goodsByCategory = new BehaviorSubject<IsubCategories[]>([])
+  private favoriteList = new BehaviorSubject<IGoodsItem[]>([])
 
-  // sharedCategory = this.category.asObservable()
+  array:IGoodsItem[] = []
+
+
   sharedCategories = this.categories.asObservable()
   sharedSubCategories = this.subCategories.asObservable()
   sharedGoods = this.goods.asObservable()
@@ -33,21 +36,15 @@ export class DataFromHttpService {
   sharedAllGoodsArray = this.allGoodsArray.asObservable()
   sharedGoodsForSlider = this.goodsForSlider.asObservable()
   sharedSearchResult = this.searchResult.asObservable()
-  // sharedAllSubCategory = this.allSubCategory.asObservable()
   sharedGoodsItem = this.goodsItem.asObservable()
   sharedGoodsByCategory = this.goodsByCategory.asObservable()
   sharedCategoryById = this.categoryById.asObservable()
   sharedSubCategoryById = this.subCategoryById.asObservable()
+  sharedFavoriteList = this.favoriteList.asObservable()
 
 
-  // nextCategory(input: any) {
-  //   this.category.next(input)
-  // }
 
   nextcategories(value: any) {
-    // let arr: any[] = []
-    // this.category.next(value)
-    // value.forEach((item: any) => arr.push(item.name))
     this.categories.next(value)
   }
 
@@ -69,12 +66,6 @@ export class DataFromHttpService {
       cat.subCategories.forEach((subCat: any) => arr.push(subCat))
     )
   }
-
-  // updateSubCategory(option?: string) {
-  //   let k: string[] = [];
-  //   this.category.value.find(item => item.name === option)?.subCategories.forEach((i: any) => k.push(i.name));
-  //   this.subCategories.next(k)
-  // }
 
   nextAllGoodsArray() {
     let a: any = (Object.entries(this.goods.value))
@@ -105,7 +96,6 @@ export class DataFromHttpService {
   }
 
   mainSerch(input: string) {
-    // let searchResultArray = [];
     if (input) {
       this.http.searchItems(input).subscribe(
         i => this.searchResult.next(i)
@@ -114,17 +104,8 @@ export class DataFromHttpService {
     else {
       this.searchResult.next([]);
     }
-    // console.log(searchResultArray)
-    // this.searchResult.next(searchResultArray);
   }
 
-  // nextAllSubCategory(input: string) {
-  //   let a: any = Object.entries(this.category.value.map(i => i.subCategories).flat())
-  //     .forEach(i => i.filter(i => typeof (i) != 'string')
-  //       .filter(item => item.name.toLowerCase().includes(input.toLowerCase())))
-  //   console.log(a)
-  //   return a
-  // }
 
   nextGoodsItem(id:string) {
     this.http.fetchGoodItem(id).subscribe(
@@ -136,4 +117,14 @@ export class DataFromHttpService {
       i => this.goodsByCategory.next(i)
     )
   }
+
+  nextFavoriteList(id:string) {
+
+    this.http.fetchGoodItem(id).subscribe(
+      i => this.array.push(i)
+    )
+    this.favoriteList.next(this.array)
+    console.log(this.array)
+  }
+
 }

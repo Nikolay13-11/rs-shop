@@ -1,1 +1,14 @@
-<p>favorites works!</p>
+<div class="favotite_contaoner">
+  <div class="wrapper">
+    <div class="favorite-item" *ngFor="let item of items$ | async">
+      <img [src]="item.imageUrls[0]" alt="">
+      <div class="description_container">
+        <span>{{item.name}}</span>
+        <ngb-rating [(rate)]="item.rating" [max]="5"></ngb-rating>
+        <span>{{item.price}}</span>
+        <button mat-stroked-button class="add-to-basket">В Корзину</button>
+        <button class="remove-from-favorite">Удалить из списка</button>
+      </div>
+    </div>
+  </div>
+</div>

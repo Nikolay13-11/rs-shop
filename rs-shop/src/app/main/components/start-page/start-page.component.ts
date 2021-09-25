@@ -24,12 +24,12 @@ export class StartPageComponent  implements OnInit{
 
   constructor(private http: HttpService, private dataService: DataFromHttpService) { }
 
-  updateData() {
-    this.http.fetchCategories().subscribe(i =>
-      this.dataService.nextcategories(i)
-    )
-    this.http.fetchGoods().subscribe(i => this.dataService.nextGoods(i))
-  }
+  // updateData() {
+  //   this.http.fetchCategories().subscribe(i =>
+  //     this.dataService.nextcategories(i)
+  //   )
+  //   this.http.fetchGoods().subscribe(i => this.dataService.nextGoods(i))
+  // }
 
   getGoodsForSlider() {
     this.goodsForSlider$ = this.dataService.sharedGoodsForSlider
@@ -37,7 +37,7 @@ export class StartPageComponent  implements OnInit{
   }
 
   ngOnInit() {
-    this.updateData();
+    // this.updateData();
     this.getGoodsForSlider()
   }
 

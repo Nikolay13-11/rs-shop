@@ -1,4 +1,6 @@
-import { Component } from '@angular/core';
+import { Component, Renderer2 } from '@angular/core';
+
+import { LoginService } from 'src/app/core/services/login.service';
 
 @Component({
   selector: 'app-profile',
@@ -7,7 +9,11 @@ import { Component } from '@angular/core';
 })
 export class ProfileComponent  {
 
-  constructor() { }
+  constructor(private loginService: LoginService, private render:Renderer2,) { }
 
-
+  changeLoginState() {
+    this.loginService.nextStatePopUpLogin(true);
+    this.render.addClass(document.body,'not-Scrl')
+    this.render.removeClass(document.getElementById('cover'),'hidden')
+  }
 }

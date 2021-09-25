@@ -1,6 +1,8 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { Observable } from 'rxjs';
+
+import { Observable, Subject, Subscription } from 'rxjs';
+import { debounceTime, distinctUntilChanged } from 'rxjs/operators';
 import { InputSearchService } from 'src/app/core/services/input-search.service';
 import { DataFromHttpService } from 'src/app/main/services/data-from-http.service';
 import { HttpService } from 'src/app/main/services/http.service';
@@ -10,13 +12,15 @@ import { HttpService } from 'src/app/main/services/http.service';
   templateUrl: './navigate-block.component.html',
   styleUrls: ['./navigate-block.component.scss']
 })
-export class NavigateBlockComponent implements OnInit {
+export class NavigateBlockComponent implements OnInit, OnDestroy{
 
   value: string = '';
   mainCategories$?: Observable<any>;
   subCategories$?: Observable<any[]>;
   catById:string = '';
   searchResult$?: Observable<any[]>;
+  public searchValue = new Subject<any>();
+  sub: Subscription;
 
 
   constructor(
@@ -25,17 +29,19 @@ export class NavigateBlockComponent implements OnInit {
     private http: HttpService,
     private router: Router
     ) {
+      this.sub = this.searchValue.pipe(
+        debounceTime(1000),
+        distinctUntilChanged(),
+      )
+      .subscribe(val => {
+        this.inputService.nextInputSearch(val)
+      })
 
   }
 
   updateMainCategories() {
     this.mainCategories$ = this.dataService.sharedCategories;
   }
-
-  // testLog(option: any) {
-  //   this.dataService.updateSubCategory(option)
-  //   // this.subCategories$ = this.dataService.sharedSubCategories;
-  // }
 
   updateSubCategoryById(id:string) {
     this.dataService.nextCategoryById(id);
@@ -61,7 +67,10 @@ export class NavigateBlockComponent implements OnInit {
   }
 
   updateSearchValue(event: any) {
-    this.inputService.nextInputSearch(event)
+    this.searchValue.next(event);
   }
 
+  ngOnDestroy(){
+    this.sub.unsubscribe()
+  }
 }
