@@ -124,14 +124,12 @@ export class DataFromHttpService {
       i => this.array.push(i)
     )
     this.favoriteList.next(this.array)
-    console.log(this.array)
   }
 
   getCatName(id:string, subId?:string) {
     let catName = this.categories.value.find(i => i.id === id)
     let SubCutName:any[] = catName.subCategories;
     SubCutName = SubCutName.find(i => i.id === subId);
-    console.log(SubCutName)
     return [catName, SubCutName]
   }
 

@@ -24,20 +24,12 @@ export class StartPageComponent  implements OnInit{
 
   constructor(private http: HttpService, private dataService: DataFromHttpService) { }
 
-  // updateData() {
-  //   this.http.fetchCategories().subscribe(i =>
-  //     this.dataService.nextcategories(i)
-  //   )
-  //   this.http.fetchGoods().subscribe(i => this.dataService.nextGoods(i))
-  // }
-
   getGoodsForSlider() {
     this.goodsForSlider$ = this.dataService.sharedGoodsForSlider
     this.goodsForPopularSlider$ = this.dataService.sharedTopRateGoods
   }
 
   ngOnInit() {
-    // this.updateData();
     this.getGoodsForSlider()
   }
 
@@ -47,17 +39,12 @@ export class StartPageComponent  implements OnInit{
       this.count--
         this.activeIndex = this.activeIndex + 885
         this.move = `translateX(${this.activeIndex}px)`
-        console.log(this.move)
-
     }
     else if (dir === 'left' && this.count < 13) {
       this.count++
         this.activeIndex = this.activeIndex - 885
         this.move = `translateX(${this.activeIndex}px)`
-        console.log(this.move)
-
     }
-    console.log(this.count)
   }
 
 }

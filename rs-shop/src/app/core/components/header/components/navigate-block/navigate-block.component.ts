@@ -58,8 +58,8 @@ export class NavigateBlockComponent implements OnInit, OnDestroy{
     this.updateMainCategories()
   }
 
-  test() {
-    this.inputService.nextInputSearch('')
+  test(cat:string = '', subCat:string = '') {
+    this.dataService.nextGoodsByCategory(cat, subCat)
   }
 
   clickLink() {

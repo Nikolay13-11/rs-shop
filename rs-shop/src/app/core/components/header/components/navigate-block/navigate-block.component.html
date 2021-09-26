@@ -14,18 +14,9 @@
       <mat-menu #q="matMenu">
         <button mat-menu-item *ngFor="let subItem of subCategories$ | async"
         routerLink='/{{catById}}/{{subItem.id}}'
+        (click)="test(catById, subItem.id)"
         >{{subItem.name}}</button>
       </mat-menu>
-      <!-- <mat-form-field class="form_search" appearance="fill">
-        <mat-icon>search</mat-icon>
-        <mat-label>
-          Поиск товаров
-        </mat-label>
-        <input matInput class="input-search" type="text" [(ngModel)]="value" (ngModelChange)="updateSearchValue($event)">
-        <button *ngIf="value" matSuffix mat-icon-button aria-label="Clear" (click)="value=''; test()">
-          <mat-icon>close</mat-icon>
-        </button>
-      </mat-form-field> -->
       <div class="search_container">
         <mat-icon class="search-icon">search</mat-icon>
         <mat-icon class="clear-input" *ngIf="value" (click)="value=''; test()">close</mat-icon>

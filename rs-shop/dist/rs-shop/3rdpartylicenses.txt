@@ -300,6 +300,9 @@ Apache-2.0
  
 
 
+xng-breadcrumb
+MIT
+
 zone.js
 MIT
 The MIT License

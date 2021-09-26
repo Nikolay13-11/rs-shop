@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+
 import { Observable } from 'rxjs';
 import { DataFromHttpService } from 'src/app/main/services/data-from-http.service';
 
@@ -10,8 +11,10 @@ import { DataFromHttpService } from 'src/app/main/services/data-from-http.servic
 export class NavigateByCatigoryComponent implements OnInit{
 categories$?: Observable<any>;
 
-constructor(private dataService: DataFromHttpService) {
+constructor(private dataService: DataFromHttpService) { }
 
+updateRoute(value:string) {
+  this.dataService.nextCategoryById(value)
 }
 
 updateMainCategories() {

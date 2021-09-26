@@ -1,19 +1,10 @@
 <div class="catigories-block_container">
   <div class="wrapper">
-    <!-- <ol class="breadcrumb">
-      <li *ngFor="let breadcrumb of breadcrumbs">
-        <span [routerLink]="breadcrumb.url" routerLinkActive="router-link-active">
-          {{ breadcrumb.label }}
-        </span>
-      </li>
-    </ol> -->
-    <!-- <xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
-      <ng-template #iconTemplate>
-        <mat-icon>chevron_right</mat-icon>
-      </ng-template> -->
     <div class="cat-list_container">
       <div class="cat-item" *ngFor="let subCat of subCategories$ | async"
-      routerLink='/{{cat}}/{{subCat.id}}'>
+      routerLink='/{{cat}}/{{subCat.id}}'
+      (click)="updateCat(cat, subCat.id)"
+      >
       <span>{{subCat.name}}</span>
       </div>
     </div>

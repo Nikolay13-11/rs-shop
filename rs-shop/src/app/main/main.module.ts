@@ -17,6 +17,7 @@ import { ChangeAvailabilityStateDirective } from './directives/change-availabili
 import { MainRoutingModule } from './main-routing.module';
 import { SortByCostPipe } from './pipes/sort-by-cost.pipe';
 import { SortByPopularityPipe } from './pipes/sort-by-popularity.pipe';
+import { ChangeFavoriteStateDirective } from './directives/change-favorite-state.directive';
 
 // import { NgbdRatingBasic } from './rating-basic';
 
@@ -34,7 +35,8 @@ import { SortByPopularityPipe } from './pipes/sort-by-popularity.pipe';
     OrdersComponent,
     ChangeAvailabilityStateDirective,
     SortByPopularityPipe,
-    SortByCostPipe
+    SortByCostPipe,
+    ChangeFavoriteStateDirective
   ],
   imports: [
     CommonModule,

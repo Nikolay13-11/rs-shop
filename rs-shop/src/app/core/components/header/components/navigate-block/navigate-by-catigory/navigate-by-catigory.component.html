@@ -3,7 +3,9 @@
     <ul>
       <li *ngFor="let item of categories$ | async">
         <button class="basket_btn" style="border: none;" mat-stroked-button
-        routerLink='/{{item.id}}'>{{item.name}}</button>
+        routerLink='/{{item.id}}'
+        (click)="updateRoute(item.id)"
+        >{{item.name}}</button>
       </li>
     </ul>
   </div>
