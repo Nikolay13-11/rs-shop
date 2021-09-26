@@ -2,6 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 
 import { Observable } from 'rxjs';
+import { BreadcrumbService } from 'xng-breadcrumb';
 
 import { DataFromHttpService } from '../../services/data-from-http.service';
 
@@ -14,16 +15,19 @@ export class CatigoryComponent implements OnInit{
 
   goodsByCatigory$?: Observable<any>
   // subCategoryById$?: Observable<any>
-  subCategory:string = ''
+  subCategory:string = '';
+  cat?:any
 
   constructor(
     private dataService: DataFromHttpService,
     private activeRoute:ActivatedRoute,
-    private router:Router
+    private router:Router,
+    private breadcrumbService: BreadcrumbService,
   ) { }
 
   updateCategory() {
     const  { categoriesId, categoryId }  = this.activeRoute.snapshot.params;
+    this.cat = this.dataService.getCatName(categoriesId)[0];
     this.subCategory = categoryId;
 
     this.dataService.nextGoodsByCategory(categoriesId, categoryId)
@@ -40,6 +44,10 @@ export class CatigoryComponent implements OnInit{
 
   ngOnInit() {
     this.updateCategory()
+    const  { categoriesId, categoryId }  = this.activeRoute.snapshot.params;
+    // this.breadcrumbService.set(':categoriesId', 'ss');
+    // this.breadcrumbService.set(':categoriesId/:categoryId', 'dd');
+    // this.breadcrumbService.set(':categoriesId/:categoryId', 'World');
   }
 
 }

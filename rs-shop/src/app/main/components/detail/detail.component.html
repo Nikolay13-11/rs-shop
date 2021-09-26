@@ -1,5 +1,12 @@
 <div class="detail_component">
   <div class="wrapper">
+    <ul class="breadcrumbs">
+      <li class="breadcrumbs__item"><a>Категории товаров</a></li>
+      <li class="breadcrumbs__item">></li>
+      <li class="breadcrumbs__item"><a routerLink='/{{cat.id}}'>{{cat.name}}</a></li>
+      <li class="breadcrumbs__item">></li>
+      <li class="breadcrumbs__item"><a routerLink='/{{cat.id}}/{{subCat.id}}'>{{subCat.name}}</a></li>
+  </ul>
     <h3>{{(item$ | async).name}}</h3>
     <div class="top-block_container">
       <div class="slider">

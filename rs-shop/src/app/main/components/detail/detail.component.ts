@@ -12,8 +12,8 @@ import { DataFromHttpService } from '../../services/data-from-http.service';
   changeDetection: ChangeDetectionStrategy.OnPush
 })
 export class DetailComponent implements OnInit, OnDestroy{
-
-
+  cat?:any;
+  subCat?:any;
   router:ActivatedRoute;
   item$?: Observable<any>
   sub: Subscription | undefined;
@@ -23,7 +23,9 @@ export class DetailComponent implements OnInit, OnDestroy{
   }
 
   updateItem() {
-    const  { goodId }  = this.router.snapshot.params;
+    const  { goodId, categoriesId, categoryId }  = this.router.snapshot.params;
+    this.cat = this.dataService.getCatName(categoriesId)[0];
+    this.subCat = this.dataService.getCatName(categoriesId, categoryId)[1];
     this.dataService.nextGoodsItem(goodId)
     this.item$ = this.dataService.sharedGoodsItem
   }

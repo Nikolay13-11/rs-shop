@@ -69,3 +69,11 @@
     display: flex;
     justify-content: center;
 }
+
+.breadcrumbs {
+    display: flex;
+    li {
+        list-style: none;
+        margin: 5px;
+    }
+}

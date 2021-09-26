@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { RouterModule, Routes } from '@angular/router';
+
 import { CatigoriesComponent } from './components/categories/catigories.component';
 import { CatigoryComponent } from './components/catigory/catigory.component';
 import { DetailComponent } from './components/detail/detail.component';
@@ -24,23 +25,29 @@ const routes: Routes = [
   {
     path: '',
     data: {
-      breadcrumb: null
+      breadcrumb: 'Main'
     },
     component: StartPageComponent
   },
   {
     path: ':categoriesId',
     data: {
-      breadcrumb: null
+      breadcrumb: {alias: 'ChildOne'}
     },
     component: CatigoriesComponent,
   },
   {
     path: ':categoriesId/:categoryId',
+    data: {
+      breadcrumb: {alias: 'test'}
+    },
     component: CatigoryComponent,
   },
   {
     path: ':categoriesId/:categoryId/:goodId',
+    data: {
+      breadcrumb: {alias: 'ChildTree'}
+    },
     component: DetailComponent,
   },
 ];

@@ -5,7 +5,12 @@ const routes: Routes = [
   {
     path: '',
     loadChildren: () => import('../app/main/main.module')
-    .then(m => m.MainModule)
+    .then(m => m.MainModule),
+    data: {
+      breadcrumb: {
+        skip: true
+      }
+    }
   }
 ];
 

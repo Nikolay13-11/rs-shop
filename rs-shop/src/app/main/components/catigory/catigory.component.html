@@ -1,5 +1,14 @@
 <div class="catigory-block_container">
   <div class="wrapper">
+    <!-- <xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+    <ng-template #iconTemplate>
+      <mat-icon>chevron_right</mat-icon>
+    </ng-template> -->
+    <ul class="breadcrumbs">
+      <li class="breadcrumbs__item"><a>Категории товаров</a></li>
+      <li class="breadcrumbs__item">></li>
+      <li class="breadcrumbs__item"><a routerLink='/{{cat.id}}'>{{cat.name}}</a></li>
+  </ul>
     <div class="sort_container">
       <span>Сортировать по:</span>
       <button>популярности</button>

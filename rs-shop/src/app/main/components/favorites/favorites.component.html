@@ -1,9 +1,11 @@
 <div class="favotite_contaoner">
   <div class="wrapper">
     <div class="favorite-item" *ngFor="let item of items$ | async">
-      <img [src]="item.imageUrls[0]" alt="">
+      <div class="img_container">
+        <img [src]="item.imageUrls[0]" alt="">
+      </div>
       <div class="description_container">
-        <span>{{item.name}}</span>
+        <span class="name-favorite">{{item.name}}</span>
         <ngb-rating [(rate)]="item.rating" [max]="5"></ngb-rating>
         <span>{{item.price}}</span>
         <button mat-stroked-button class="add-to-basket">В Корзину</button>
