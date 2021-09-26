@@ -1,0 +1,79 @@
+@import "../../../core/constatnts/styles/core-style.scss";
+
+.detail_component {
+    margin-top: 30px;
+    h3 {
+        text-align: center;
+    }
+}
+
+.btn_container {
+    margin-top: 30px;
+    margin-bottom: 30px;
+    width: 100%;
+    height: 50px;
+    display: flex;
+    p {
+        width: 150px;
+        height: 50px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        font-size: 25px;
+        font-weight: 700;
+        border: 2px solid red;
+        border-bottom: 0;
+    }
+    div {
+        height: 50px;
+        width: 100%;
+        border-bottom: 2px solid red;
+    }
+}
+
+.description {
+    width: 80%;
+}
+
+.top-block_container {
+    display: flex;
+    justify-content: space-evenly;
+}
+
+.buttons_container {
+    display: flex;
+    flex-direction: column;
+    button {
+        margin-top: 20px;
+    }
+}
+.slider {
+    width: 70%;
+}
+
+.add-to-basket {
+    width: 150;
+    background: linear-gradient(90deg, #941e94, #e52e6b);
+    outline: none;
+    color: white;
+}
+
+.add-to-favorite {
+    display: flex;
+    align-items: center;
+    background: none;
+    border: none;
+}
+
+.img-slider {
+    display: flex;
+    justify-content: center;
+}
+
+.breadcrumbs {
+    display: flex;
+    li {
+        list-style: none;
+        margin: 5px;
+    }
+}

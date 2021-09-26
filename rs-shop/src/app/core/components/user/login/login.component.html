@@ -1,0 +1,16 @@
+<div class="auth-pop-up" *ngIf="statePopUp$ | async">
+    <mat-icon class="close" (click)="closePopUp()">close</mat-icon>
+    <div class="login_wrapper">
+      <span>Вход</span>
+      <form #myForm="ngForm" class="login_form" id="loginForm" [formGroup]="form" (ngSubmit)="submitLoginForm()">
+        <input type="text" placeholder="Login" formControlName="userName">
+        <input type="password" placeholder="Password" formControlName="password">
+        <button mat-stroked-button  type="submit" class="login_form_button" [disabled]="form.invalid">Войти</button>
+    </form>
+    <div class="separator-login"></div>
+    <button class="reg-btn" (click)="openRegistration()">Регистрация</button>
+    </div>
+</div>
+<app-register *ngIf="statePopUpRegistration$ | async"></app-register>
+
+

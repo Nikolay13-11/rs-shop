@@ -1,0 +1,33 @@
+<div class="catigory-block_container">
+  <div class="wrapper">
+    <!-- <xng-breadcrumb [separator]="iconTemplate"></xng-breadcrumb>
+    <ng-template #iconTemplate>
+      <mat-icon>chevron_right</mat-icon>
+    </ng-template> -->
+    <ul class="breadcrumbs">
+      <li class="breadcrumbs__item"><a>Категории товаров</a></li>
+      <li class="breadcrumbs__item">></li>
+      <li class="breadcrumbs__item"><a routerLink='/{{cat.id}}'>{{cat.name}}</a></li>
+  </ul>
+    <div class="sort_container">
+      <span>Сортировать по:</span>
+      <button>популярности</button>
+      <button>цене</button>
+    </div>
+    <h3>{{subCategory}}</h3>
+    <div class="category-items_container">
+      <div class="item" *ngFor="let item of goodsByCatigory$| async">
+        <img [src]="item.imageUrls[0]" alt="" (click)="navigate(item.id)">
+        <span class="item-name" (click)="navigate(item.id)">{{item.name}}</span>
+        <p>
+          <mat-icon appChangeAvailabilityState [availableAmount]="item.availableAmount">check_circle</mat-icon>
+          В наличии
+        </p>
+        <span>{{item.price}}</span>
+        <ngb-rating [(rate)]="item.rating" [max]="5"></ngb-rating>
+        <button class="basket_btn" mat-stroked-button>В корзину</button>
+        <button class="addFavorite">В избранное</button>
+      </div>
+    </div>
+  </div>
+</div>

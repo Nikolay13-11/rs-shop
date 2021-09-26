@@ -1,0 +1,34 @@
+%social-ikon {
+    background-position: center;
+    background-repeat: no-repeat;
+    background-size: 70%;
+    margin: 20px 5px 20px 5px;
+}
+
+.sicial_block {
+    display: flex;
+    justify-content: center;
+    button {
+        // background-color: white;
+    }
+}
+.youtoube {
+    background-image: url("../../../../../../assets/icons/icon-youtube.png");
+    @extend %social-ikon;
+}
+.instagram {
+    background-image: url("../../../../../../assets/icons/icon-instagram.png");
+    @extend %social-ikon;
+}
+.pinterest {
+    background-image: url("../../../../../../assets/icons/icon-pinterest.png");
+    @extend %social-ikon;
+}
+.twitter {
+    background-image: url("../../../../../../assets/icons/icon-twitter.png");
+    @extend %social-ikon;
+}
+.facebook {
+    background-image: url("../../../../../../assets/icons/icon-facebook.png");
+    @extend %social-ikon;
+}

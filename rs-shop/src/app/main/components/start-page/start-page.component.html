@@ -1,0 +1,50 @@
+<div class="wrapper">
+  <div class="main_slider">
+    <ngb-carousel *ngIf="goodsForSlider$" [showNavigationArrows]="false">
+      <ng-template *ngFor="let item of goodsForSlider$ | async" ngbSlide>
+    <div class="slider_card">
+      <div class="slider_image">
+        <img [src]="item.imageUrls[0]" alt="">
+      </div>
+      <div class="slider_description">
+        <div class="top_section">
+          <p>{{item.name}}</p>
+          <p>Выгодная рассрочка</p>
+        </div>
+        <div class="bottom_section">
+          <div class="benefit">
+            <p class="benefitBefor">Платёж всего</p>
+            <p class="benefit_count">{{item.price}}</p>
+            <p class="benefit_currency">руб/мес</p>
+          </div>
+        </div>
+      </div>
+    </div>
+  </ng-template>
+</ngb-carousel>
+  </div>
+  <div class="popular_goods">
+    <h3>Популярные товары</h3>
+    <div class="pop_container">
+      <mat-icon class="arr" (click)="movePopularSlider('left')">arrow_back_ios</mat-icon>
+      <div class="popular_container">
+        <div class="popular_item" [style.transform]="move" *ngFor="let item of goodsForPopularSlider$ | async">
+            <img [src]="item.imageUrls[0]" alt="">
+            <mat-icon class="recomend">recommend</mat-icon>
+          <div class="info_cont">
+            <span>{{item.name}}</span>
+            <ngb-rating [(rate)]="item.rating" [max]="5"></ngb-rating>
+            <span>{{item.price | currency:'BYN':'symbol-narrow'}}</span>
+          </div>
+        </div>
+    </div>
+    <mat-icon class="arr" (click)="movePopularSlider('right')">arrow_forward_ios</mat-icon>
+    </div>
+    </div>
+  </div>
+
+
+
+
+
+

@@ -1,0 +1,17 @@
+<div class="register-pop-up">
+  <mat-icon class="close" (click)="closeRegistration()">close</mat-icon>
+  <div class="register_wrapper">
+    <span>Регистрация</span>
+    <form #myForm="ngForm" class="login_form" id="loginForm" [formGroup]="form" (ngSubmit)="submitRegistrationForm()">
+      <input type="text" placeholder="Имя" formControlName="Name">
+      <input type="text" placeholder="Фамилия" formControlName="SubName">
+      <input type="text" placeholder="Login" formControlName="userName">
+      <input type="password" placeholder="Password" formControlName="password">
+      <button mat-stroked-button  type="submit" class="login_form_button" [disabled]="form.invalid">Регистрация</button>
+  </form>
+</div>
+</div>
+
+
+
+

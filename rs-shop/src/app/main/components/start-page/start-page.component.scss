@@ -1,0 +1,139 @@
+@import "../../../core/constatnts/styles/core-style.scss";
+
+.wrapper {
+    width: $wrapper;
+    margin: 0 auto;
+}
+
+.main_slider {
+    width: 730;
+    height: 450;
+}
+
+.popular_goods {
+    margin-top: 10px;
+    // overflow-x: hidden;
+    h3 {
+        margin-top: 20px;
+        margin-bottom: 20px;
+    }
+}
+
+.slider_card {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+.slider_image {
+    margin: 40px;
+    max-width: 50%;
+    img {
+        max-height: 80%;
+        max-width: 500px;
+    }
+}
+
+.slider_description {
+    display: flex;
+    flex-direction: column;
+    margin: 40px;
+    text-align: center;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.top_section {
+    p {
+        font-size: 30px;
+        font-weight: 500;
+        width: 500px;
+    }
+}
+
+.benefit {
+    width: 400px;
+    height: 80px;
+    border-radius: 10px;
+    background-color: violet;
+    display: flex;
+    align-items: center;
+    justify-content: space-evenly;
+
+    p {
+        color: #ffffff;
+    }
+
+    .benefitBefor {
+        width: 70px;
+        text-align: end;
+        font-size: 20px;
+    }
+    .benefit_count {
+        font-size: 70px;
+        font-weight: 500;
+    }
+    .benefit_currency {
+        font-size: 20px;
+    }
+}
+
+.car_flex {
+    display: flex;
+    flex-wrap: wrap;
+}
+
+.popular_container {
+    height: 465px;
+    overflow: hidden;
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: center;
+    flex-direction: column;
+    width: 885px;
+    border: 1px solid rgba(213, 215, 219, 0.4);
+}
+
+.popular_item {
+    transition: transform 0.5s ease-in-out;
+    width: 255px;
+    height: 190px;
+    margin: 20px;
+    display: flex;
+    transform: translateX(0);
+    img {
+        width: 80px;
+        height: 100%;
+    }
+}
+
+.pop_container {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+}
+
+// .img_cont {
+//     display: flex;
+// }
+
+.info_cont {
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    justify-content: space-evenly;
+}
+
+.recomend {
+    color: #e52e6b;
+}
+
+.arr {
+    font-size: 60px;
+    cursor: pointer;
+}
+
+.arr:hover {
+    color: #e52e6b;
+}
