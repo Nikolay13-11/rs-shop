@@ -1,3 +1,2 @@
 # rs-shop
-
-(https://www.genome.gov/)
+https://www.genome.gov/
